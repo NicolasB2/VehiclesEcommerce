@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser')
 var logger = require('morgan');
 
-var vehicleRouter = require('./api/routes/vehicleRoutes');
+var route = require('./api/routes/routes');
 
 const db = require('./config/mongoose')
 
@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 var cors = require('cors');
 app.use(cors({origin: 'http://localhost:8080'}));
 
-app.use('/vehicle', vehicleRouter); 
+app.use('/', route); 
 
 
 // catch 404 and forward to error handler
