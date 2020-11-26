@@ -4,12 +4,17 @@ import vuetify from '@/plugins/vuetify' // path to vuetify export
 import VueRouter from 'vue-router';
 
 import Home from './components/Home';
+import Vehicles from './components/Vehicles';
 
 
 const routes = [
   {
     path: '/',
     component: Home
+  },
+  {
+    path: '/cars',
+    component: Vehicles
   },
 
 ]
