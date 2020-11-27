@@ -12,7 +12,8 @@ let vehicleSchema = new Schema(
         registration: {type: String, required:true},
         year: {type: String, required:true},
         model: {type: String, required:true},
-        drive: {type: String, required:true}
+        drive: {type: String, required:true},
+        img: {type: String, required: true}
 
     }
 )

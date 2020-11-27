@@ -10,7 +10,7 @@
     <div class="container">
       <v-layout wrap>
           <v-flex xs12 sm4 md3 v-for="vehicle in vehicles" :key="vehicle._id">
-          <section id="featured-cars" class="featured-cars">
+          <section>
 			<div class="container">
                 <app-car :car="vehicle"></app-car>
 			</div>
@@ -23,48 +23,21 @@
 
 <script>
 import Car from "./Car";
+import { api } from '../helpers/helpers';
 
 export default {
     components:{
         appCar: Car,
     },
-    data: ()=> ({
-        vehicles: [
-            
-                {
-                    name: 'BMW',
-                    img: 'https://bmwco.vtexassets.com/arquivos/model-serie1.png',
-                    price:610000,
-                    _id:1,
-
-                } 
-            ,
-            
-                {
-                    name: 'Camaro ss',
-                    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTox6Sv1UfAXsII8soVHtfo0SS7y4aCQnYZxw&usqp=CAU',
-                    price:6565000,
-                    _id:2,
-                } 
-            ,
-            
-                {
-                    name: 'Ferray',
-                    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsDheic4SpasJE98GyPtTYIizityuEjEVJLw&usqp=CAU',
-                    price:588400000,
-                    _id:3,
-                } 
-            ,
-            
-                {
-                    name: 'Audi',
-                    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnv07mk-TlIrQLnyefMLE5iw4PyCBOtwdvYw&usqp=CAU',
-                    price:10000,
-                    _id:4,
-                } 
-            
-        ]
-    }),
+    data() {
+        return {
+            vehicles: []
+        };
+    },
+    async mounted() {
+        this.vehicles = await api.getvehicles();
+        console.log(this.vehicles.length)
+  }
 }
 
 </script>
