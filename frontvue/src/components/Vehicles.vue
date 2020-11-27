@@ -7,11 +7,17 @@
 			</div>
 		</div>
     </section>
+    <div class="container">
       <v-layout wrap>
           <v-flex xs12 sm4 md3 v-for="vehicle in vehicles" :key="vehicle._id">
-             <app-car :car="vehicle"></app-car>
+          <section id="featured-cars" class="featured-cars">
+			<div class="container">
+                <app-car :car="vehicle"></app-car>
+			</div>
+          </section>
           </v-flex>
       </v-layout>
+    </div>
   </div>
 </template>
 
@@ -28,31 +34,31 @@ export default {
                 {
                     name: 'BMW',
                     img: 'https://bmwco.vtexassets.com/arquivos/model-serie1.png',
-                    price:10000,
+                    price:610000,
                     _id:1,
 
                 } 
             ,
             
                 {
-                    name: 'test',
-                    img: 'https://bmwco.vtexassets.com/arquivos/model-serie1.png',
-                    price:10000,
+                    name: 'Camaro ss',
+                    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTox6Sv1UfAXsII8soVHtfo0SS7y4aCQnYZxw&usqp=CAU',
+                    price:6565000,
                     _id:2,
                 } 
             ,
             
                 {
-                    name: 'test',
-                    img: 'https://bmwco.vtexassets.com/arquivos/model-serie1.png',
-                    price:10000,
+                    name: 'Ferray',
+                    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsDheic4SpasJE98GyPtTYIizityuEjEVJLw&usqp=CAU',
+                    price:588400000,
                     _id:3,
                 } 
             ,
             
                 {
-                    name: 'test',
-                    img: 'https://bmwco.vtexassets.com/arquivos/model-serie1.png',
+                    name: 'Audi',
+                    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnv07mk-TlIrQLnyefMLE5iw4PyCBOtwdvYw&usqp=CAU',
                     price:10000,
                     _id:4,
                 } 
