@@ -13,8 +13,8 @@ let vehicleSchema = new Schema(
         year: {type: String, required:true},
         model: {type: String, required:true},
         drive: {type: String, required:true},
-        state: {type: String, requiered:true}
-
+        state: {type: String, requiered:true},
+        img: {type: String, required: true}
     }
 )
 
