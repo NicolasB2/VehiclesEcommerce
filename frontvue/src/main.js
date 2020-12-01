@@ -5,6 +5,7 @@ import VueRouter from 'vue-router';
 
 import Home from './components/Home';
 import Vehicles from './components/Vehicles';
+import DetailVehicle from './components/DetailVehicle';
 
 
 const routes = [
@@ -16,6 +17,11 @@ const routes = [
     path: '/cars',
     component: Vehicles
   },
+  {
+    path: '/cardetail',
+    component: DetailVehicle
+  },
+  
 
 ]
 

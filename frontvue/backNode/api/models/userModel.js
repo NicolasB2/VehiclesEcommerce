@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const vehicleModel = require('./vehicleModel');
 const { Schema } = mongoose;
 
 let userSchema = new Schema(
@@ -10,6 +11,7 @@ let userSchema = new Schema(
         email:    {type: String, required: true},
         phoneNumber: {type: String, required:true},
         rol: {type: String, required:true},
+        listOfVehicles: {type: vehicleModel, required:true}
     }
 )
 
