@@ -16,6 +16,7 @@
       <h3>$ {{ car.price }}</h3>
       <p>
       </p>
+      <button @click="viewDetails"> View details</button>
     </div>
   </div>
 </template>
@@ -27,10 +28,10 @@ export default {
       type: Object,
     },
   },
-  created() {},
   methods: {
-    addFavorites() {
-      this.$store.dispatch("addToFavorites", this.dog);
+    viewDetails() {
+      this.$store.dispatch("viewDetails", this.car);
+      this.$router.push('/cardetail')
     },
   },
 };

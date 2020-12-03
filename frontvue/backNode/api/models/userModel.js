@@ -10,7 +10,7 @@ let userSchema = new Schema(
         email:    {type: String},
         phoneNumber: {type: String},
         rol: {type: String},
-        listOfVehicles: {type: Object}
+        listOfVehicles: {type: Object},
     }
 )
 

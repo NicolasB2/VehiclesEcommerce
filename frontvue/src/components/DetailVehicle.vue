@@ -2,7 +2,7 @@
   <section id="new-cars" class="new-cars">
     <div class="container">
       <div class="section-header">
-        <h2>Chevrolet Camaro SS</h2>
+        <h2> {{vehicle.car+" "+vehicle.model}}</h2>
       </div>
 
       <div class="new-cars-content">
@@ -10,7 +10,6 @@
           <div class="new-cars-item">
             <div class="single-new-cars-item">
               <div class="row">
-                
                 <div class="col-md-7 col-sm-12">
                   <div class="new-cars-img">
                     <v-img :src="vehicle.img"></v-img>
@@ -18,33 +17,27 @@
                 </div>
 
                 <div class="col-md-5 col-sm-12">
-                    
-                    <div class="new-cars-txt">
+                  <div class="new-cars-txt">
                     <h2>Seller Information</h2>
-                    
-                    <p>Name: {{seller.name}}</p>
-                    <p>Phone: {{seller.phone}}</p>
-                    <p>Email: {{seller.email}} </p>
-                    <p>Location: {{seller.location}}</p>
+
+                    <p>Name: {{ seller.fullName }}</p>
+                    <p>Phone: {{ seller.phoneNumber }}</p>
+                    <p>Email: {{ seller.email }}</p>
                     
                   </div>
                 </div>
-
 
                 <div class="col-md-12 col-sm-12">
-                    
-                    <div class="new-cars-txt">
+                  <div class="new-cars-txt">
                     <h2>Vehicle Information</h2>
 
-                    <p>Brand: {{vehicle.car}}</p>
-                    <p>Model: {{vehicle.model}}</p>
-                    <p>Price: $ {{vehicle.price }} </p>
-                    <p>Miles: {{vehicle.miliage}}</p>
-                    <p>Discrption: {{vehicle.description}}</p>
-                    
+                    <p>Brand: {{ vehicle.car }}</p>
+                    <p>Model: {{ vehicle.model }}</p>
+                    <p>Price: $ {{ vehicle.price }}</p>
+                    <p>Miles: {{ vehicle.mileage }}</p>
+                    <p>Discrption: {{ vehicle.engType }}</p>
                   </div>
                 </div>
-
               </div>
             </div>
           </div>
@@ -55,35 +48,22 @@
 </template>
 
 <script>
+import { api } from '../helpers/helpers';
+
+
 export default {
-    components:{
 
-    },
-    data: ()=> ({
-        vehicle: {
+  data() {
+    return {
+      vehicle: {},
+      seller: {},
+    };
+  },
+  async mounted() {
+    this.vehicle = this.$store.state.vehicle;
+    this.seller = await api.getUser(this.vehicle.idSeller);
 
-            car: 'Chevrolet',
-            price: '130.000.000',
-            year: '2020',
-            brand: 'Chevrolet',
-            miliage: 300000,
-            model: 'Camaro',
-            img: 'https://www.elcarrocolombiano.com/wp-content/uploads/2019/05/20190504-CHEVROLET-CAMARO-2020-01.jpg',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit maiores adipisci nam exercitationem tempore voluptate quod eligendi! Odit veniam omnis tenetur velit veritatis esse dolorum assumenda incidunt, cumque, consequatur perspiciatis.',
-            color: 'Blue'
-        },
-
-        seller: {
-
-            name: 'David Erazo',
-            phone: '31211332211',
-            email: 'evo@hotmail.com',
-            location: 'Cali, Colombia'
-
-
-        }
-    })
-
+  },
 };
 </script>
 
@@ -109,7 +89,7 @@ h2 {
 }
 
 p {
-    font-size: 30px;
+  font-size: 30px;
 }
 
 .label {
@@ -134,10 +114,13 @@ p {
   margin: 0 auto;
 }
 
-.new-cars-txt {margin-left: 80px;margin-bottom: 30px;}
+.new-cars-txt {
+  margin-left: 80px;
+  margin-bottom: 30px;
+}
 .new-cars-txt h2 a {
-    font-size:  30px;
-    font-weight:  500;
-    margin-bottom: 26px;
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 26px;
 }
 </style>

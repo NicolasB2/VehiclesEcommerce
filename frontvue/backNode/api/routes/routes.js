@@ -6,6 +6,11 @@ var vehicle_controller = require("../controllers/vehicleController")
 var user_controller = require("../controllers/userController")
 var passport = require("passport")
 
+var cors = require('cors');
+passport.use(cors({origin: 'http://localhost:8080'}));
+
+
+	
 router.get("/vehicles/", vehicle_controller.listAllVehicles) 
 router.post("/vehicles/", vehicle_controller.createVehicle) 
 router.get('/vehicles/:vehicleId', vehicle_controller.readVehicle)
@@ -24,8 +29,9 @@ router.get('/logout', function(req, res) {
   });
 
 router.get('/auth/facebook', passport.authenticate('facebook'));
+
 router.get('/auth/facebook/callback', passport.authenticate('facebook',
-    { successRedirect: '/', failureRedirect: '/login' }
+    { successRedirect: '/users'}
   ));
 
 

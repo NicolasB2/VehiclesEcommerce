@@ -13,6 +13,7 @@ module.exports = function(passport) {
 		done(null, obj);
 	});
 
+	
 	passport.use(new FacebookStrategy({
 		clientID			: config.facebook.key,
 		clientSecret	: config.facebook.secret,
@@ -21,6 +22,7 @@ module.exports = function(passport) {
 	}, function(accessToken, refreshToken, profile, done) {
 		User.findOne({provider_id: profile.id}, function(err, user) {
 			if(err) throw(err);
+				console.log("Bad login")
 			if(!err && user!= null) return done(null, user);
 
 			var user = new User({

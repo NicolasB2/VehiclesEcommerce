@@ -30,7 +30,6 @@ export default {
     },
     async mounted() {
         this.vehicles = await api.getvehicles();
-        console.log(this.vehicles.length)
   }
 }
 
