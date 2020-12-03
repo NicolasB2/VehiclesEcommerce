@@ -2,8 +2,11 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser')
+var passport = require('passport')
+var bodyParser = require('body-parser');
 var logger = require('morgan');
+
+require("./api/routes/passport")(passport);
 
 var route = require('./api/routes/routes');
 
@@ -23,6 +26,9 @@ app.use(bodyParser());
 app.use(express.static(path.join(__dirname, 'public')));
 var cors = require('cors');
 app.use(cors({origin: 'http://localhost:8080'}));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', route); 
 
