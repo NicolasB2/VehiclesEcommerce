@@ -1,7 +1,7 @@
 <template>
   <v-app-bar
     v-scroll="onScroll"
-    :color="!isScrolling ? 'transparent' : 'black'"
+    :color="!isScrolling ? 'black' : 'black'"
     fixed
     flat
   >
