@@ -1,7 +1,7 @@
 <template>
     <div grid-list-md fluid>
     <div></div>
-    <div class="container">
+    <div class="container"> 
       <v-layout wrap>
           <v-flex xs12 sm4 md3 v-for="vehicle in vehicles" :key="vehicle._id">
           <section>

@@ -1,11 +1,11 @@
 <template>
   <section id="new-cars" class="new-cars">
-    <div class="container">
+    <v-container class="grey lighten-5">
       <div class="section-header">
-        <h2> {{vehicle.car+" "+vehicle.model}}</h2>
+        <h2>{{ vehicle.car + " " + vehicle.model }}</h2>
       </div>
-
-      <div class="new-cars-content">
+      <v-row no-gutters>
+          <div class="new-cars-content">
         <div class="owl-carousel owl-theme" id="new-cars-carousel">
           <div class="new-cars-item">
             <div class="single-new-cars-item">
@@ -23,7 +23,7 @@
                     <p>Name: {{ seller.fullName }}</p>
                     <p>Phone: {{ seller.phoneNumber }}</p>
                     <p>Email: {{ seller.email }}</p>
-                    
+                    <v-btn class="prymary"> Contact</v-btn>
                   </div>
                 </div>
 
@@ -43,16 +43,18 @@
           </div>
         </div>
       </div>
-    </div>
+
+
+
+      </v-row>
+    </v-container>
   </section>
 </template>
 
 <script>
-import { api } from '../helpers/helpers';
-
+import { api } from "../helpers/helpers";
 
 export default {
-
   data() {
     return {
       vehicle: {},
@@ -62,7 +64,6 @@ export default {
   async mounted() {
     this.vehicle = this.$store.state.vehicle;
     this.seller = await api.getUser(this.vehicle.idSeller);
-
   },
 };
 </script>
@@ -84,11 +85,12 @@ h2 {
   font-weight: 500;
 }
 .new-cars {
-  
-  padding: 112px 0 120px;
+  background: #0f2032;
+  padding: 112px 0 40%;
 }
 
 p {
+  margin-top: 10px;
   font-size: 30px;
 }
 
@@ -100,7 +102,8 @@ p {
 }
 
 .new-cars-content {
-  padding-top: 96px;
+  padding-top: 50px;
+  margin-left: 15%;
 }
 .clients-say .owl-carousel .owl-stage {
   position: relative;
