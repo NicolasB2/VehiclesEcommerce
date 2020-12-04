@@ -84,7 +84,6 @@ h2 {
   font-weight: 500;
 }
 .new-cars {
-  background: #f8f9fb;
   padding: 112px 0 120px;
 }
 
