@@ -1,22 +1,19 @@
-  
 <template>
-  <div class="single-featured-cars">
-    <div class="featured-img-box">
-      <div class="featured-cars-img">
-        <v-img :src="car.img" > </v-img>
+  <div class="container">
+    <div class="single-featured-cars">
+      <div class="featured-img-box single-catalog-item" @click="viewDetails">
+        <div class="featured-cars-img">
+          <v-img :src="car.img" class="featured-cars-img"> </v-img>
+        </div>
+        <div class="featured-model-info">
+          <div class="featured-cars-txt">
+            <h2>{{ car.car }}</h2>
+            <h2>$ {{ car.price }}</h2>
+            <h3>year : {{ car.year }}</h3>
+            <h3>model : {{ car.model }}</h3>
+          </div>
+        </div>
       </div>
-      <div class="featured-model-info">
-        <p> year  :  {{ car.year }}</p>
-        <p> model : {{ car.model }}</p>
-        <!--<p> type  : {{ car.engType }}</p>-->
-      </div>
-    </div>
-    <div class="featured-cars-txt">
-      <h2>{{ car.car }}</h2>
-      <h3>$ {{ car.price }}</h3>
-      <p>
-      </p>
-      <button @click="viewDetails"> View details</button>
     </div>
   </div>
 </template>
@@ -31,7 +28,7 @@ export default {
   methods: {
     viewDetails() {
       this.$store.dispatch("viewDetails", this.car);
-      this.$router.push('/cardetail')
+      this.$router.push("/cardetail");
     },
   },
 };
@@ -39,6 +36,7 @@ export default {
 
 <style>
 .featured-cars {
+  border-radius: 15px;
   padding: 112px 0 120px;
 }
 .featured-cars-content {
@@ -47,16 +45,17 @@ export default {
 
 /*.single-featured-cars*/
 .featured-img-box {
-  border: 1px solid #dadfe9;
+  border-radius: 15px;
+  background: white;
 }
 
 .featured-cars-img {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 30px;
   height: 220px;
   border-bottom: 1px solid #dadfe9;
+  border-radius: 15px;
 }
 .featured-model-info {
   padding: 12px 7px;
@@ -75,13 +74,14 @@ export default {
   margin-right: 10px;
 }
 .featured-cars-txt {
-  margin: 21px 0 47px;
+  margin: 21px 0 30px;
+  padding: 8px;
 }
 .featured-cars-txt h2 a {
-  font-size: 16px;
+  font-size: 20px;
   margin-bottom: 15px;
 }
-.featured-cars-txt h2 a span {
+.featured-cars-txt h1 a span {
   text-transform: uppercase;
 }
 .featured-cars-txt h3 {
@@ -89,6 +89,13 @@ export default {
 }
 .featured-cars-txt h3,
 .featured-cars-txt p {
-  font-size: 13px;
+  font-size: 18px;
 }
+.single-catalog-item p:before {
+    background: #89f0d9;
+}
+
+.single-catalog-item:hover h2 a,.single-catalog-item:hover {color:#fff}
+.single-catalog-item:hover p:before {background: #fff;}
+.single-catalog-item:hover{background: #4b4949; border: 10px solid #4b4949}
 </style>
