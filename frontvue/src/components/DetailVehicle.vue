@@ -86,7 +86,7 @@ h2 {
 }
 .new-cars {
   background: #0f2032;
-  padding: 112px 0 40%;
+  padding: 112px 0 0%;
 }
 
 p {

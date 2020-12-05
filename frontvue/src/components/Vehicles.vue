@@ -1,17 +1,10 @@
 <template>
-<<<<<<< HEAD
-    <div grid-list-md fluid>
-    <div></div>
-    <div class="container"> 
-      <v-layout wrap>
-=======
   <section class="catalog-cars">
     <div class="container">
       <div grid-list-md fluid>
         <div></div>
         <v-layout wrap>
->>>>>>> 2326cc83d4c0f7e6594dc285df840aa4a9af8d0a
-          <v-flex xs12 sm4 md3 v-for="vehicle in vehicles" :key="vehicle._id">
+          <v-flex xs20 sm12 md6 lg4 xl3 v-for="vehicle in vehicles" :key="vehicle._id">
             <section>
               <div class="container">
                 <app-car :car="vehicle"></app-car>

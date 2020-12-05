@@ -81,7 +81,6 @@
       ],
       nav2: [
         {
-    
           text: 'Login',
           to: "/login",
           title: 'Login',
@@ -92,7 +91,13 @@
           to: "/register",
           title: 'Register',
           active: false
-        }
+        },
+        {
+          text: 'user Detail',
+          to: "/userdetail",
+          title: 'user',
+          active: true
+        },
       ]
     }),
 
