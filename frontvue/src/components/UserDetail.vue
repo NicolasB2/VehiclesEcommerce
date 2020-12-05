@@ -1,19 +1,17 @@
 <template>
     <section class="detail-user">
     <div class="container">
-        <div class="col-md-4 col-sm-4">
-        <div class="new-cars-txt">
-            <h2>Seller Information</h2>
-
-            <p>Name: {{ user.fullName }}</p>
-            <p>Phone: {{ user.phoneNumber }}</p>
-            <p>Email: {{ user.email }}</p>
-            <v-btn class="prymary"> Contact</v-btn>
-        </div>
+        <div class="my-cars">
+            <div class="user-txt">
+                <h2>My Information</h2>
+                <p>Name: {{ user.fullName }}</p>
+                <p>Phone: {{ user.phoneNumber }}</p>
+                <p>Email: {{ user.email }}</p>
+            </div>
         </div>
         <div grid-list-md fluid>
         <div></div>
-        <v-layout wrap>
+        <v-layout wrap class="my-cars">
             <v-flex xs20 sm12 md6 lg4 xl3  v-for="vehicle in vehicles" :key="vehicle._id">
             <section>
                 <div class="container">
@@ -48,7 +46,17 @@ export default {
 </script>
 
 <style>
+.user-txt{
+    margin-left: 80px;
+    color: white;
+}
 .detail-user{
-    padding: 112px 0 40%;
+    padding: 112px 50px 40%;
+}
+.my-cars {
+  background: #0F2032;
+  padding: 15px 15px 15px;
+  border-radius: 15px;
+  margin: 10px;
 }
 </style>

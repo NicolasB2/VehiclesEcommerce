@@ -95,7 +95,11 @@ export default {
     background: #89f0d9;
 }
 
+.single-catalog-item h2 a,.single-catalog-item {color:black}
+.single-catalog-item p:before {background: #4b4949;}
+.single-catalog-item {background: #fff; border: 10px solid #fff}
+
 .single-catalog-item:hover h2 a,.single-catalog-item:hover {color:#fff}
 .single-catalog-item:hover p:before {background: #fff;}
-.single-catalog-item:hover{background: #4b4949; border: 10px solid #4b4949}
+.single-catalog-item:hover {background: #4b4949; border: 10px solid #4b4949}
 </style>
