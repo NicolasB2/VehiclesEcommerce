@@ -1,78 +1,97 @@
 <template>
- <section class="font" >
-  <div id="Login" >
-    <v-flex class="vux-center">
-      <div class="login-form">
-        <v-card elevation="10" class="form-wrapper">
-          <v-card-title>
-            <div class="display-1 mb-2"> Register</div>
-          </v-card-title>
-          <v-form v-model="valid">
-            <v-text-field
-              prepend-icon="mdi-email"
-              label="Email"
-              required
-              :rules="emailRules"
-              v-model.lazy="email"
-            ></v-text-field>
-            <v-text-field
-              prepend-icon="mdi-lock"
-              autocomplete="current-password"
-              :value="password"
-              label="Enter password"
-              :append-icon="value ? 'mdi-eye' : 'mdi-eye-off'"
-              @click:append="() => (value = !value)"
-              :type="value ? 'password' : 'text'"
-              :rules="passwordRule"
-              v-model="password"
-            ></v-text-field>
-            <v-text-field
-              prepend-icon="mdi-account"
-              label="Username"
-              required
-            ></v-text-field>
-            <v-text-field
-              prepend-icon="mdi-account"
-              label="Full Name"
-              required
-            ></v-text-field>
-            <v-text-field
-              prepend-icon="mdi-phone"
-              label="PhoneNumber"
-              required
-            ></v-text-field>
-            <v-text-field
-              prepend-icon="mdi-account-box-multiple"
-              label="IdNumber"
-              required
-            ></v-text-field>
-            <v-btn :disabled="!valid" @click="verifyUser" router>Register</v-btn>
-          </v-form>
-        </v-card>
-        <v-dialog v-model="error" max-width="400px">
-          <v-alert type="error"
-            >The user email or password is incorrect</v-alert
-          >
-        </v-dialog>
-      </div>
-    </v-flex>
-  </div>
- </section> 
+  <section class="font">
+    <div id="Login">
+      <v-flex class="vux-center">
+        <div class="login-form">
+          <v-card elevation="10" class="form-wrapper">
+            <v-card-title>
+              <div class="display-1 mb-2">Register</div>
+            </v-card-title>
+            <v-form v-model="valid">
+              <v-text-field
+                prepend-icon="mdi-email"
+                label="Email"
+                required
+                :rules="emailRules"
+                v-model.lazy="email"
+              ></v-text-field>
+              <v-text-field
+                prepend-icon="mdi-lock"
+                autocomplete="current-password"
+                :value="password"
+                label="Enter password"
+                :append-icon="value ? 'mdi-eye' : 'mdi-eye-off'"
+                @click:append="() => (value = !value)"
+                :type="value ? 'password' : 'text'"
+                :rules="passwordRule"
+                v-model="password"
+              ></v-text-field>
+              <v-text-field
+                prepend-icon="mdi-account"
+                label="Username"
+                required
+                v-model="userName"
+              ></v-text-field>
+              <v-text-field
+                prepend-icon="mdi-account"
+                label="Full Name"
+                required
+                v-model="fullName"
+              ></v-text-field>
+              <v-text-field
+                prepend-icon="mdi-phone"
+                label="CellphoneNumber"
+                required
+                v-mask= "'(###) ### - ### - ####'"
+                v-model="phoneNumber"
+              ></v-text-field>
+              <v-text-field
+                prepend-icon="mdi-account-box-multiple"
+                label="IdNumber"
+                required
+                v-model="idNumber"
+              ></v-text-field>
+              <v-btn :disabled="!valid" @click="verifyUser" router
+                >Register</v-btn
+              >
+            </v-form>
+          </v-card>
+          <v-dialog v-model="error" max-width="400px">
+            <v-alert type="error"
+              >The user email or password is incorrect</v-alert
+            >
+          </v-dialog>
+        </div>
+      </v-flex>
+    </div>
+  </section>
 </template>
 
 
 <script>
+import { mask } from "vue-the-mask";
+import { api } from "../helpers/helpers";
+
 export default {
+  directives: {
+    mask,
+  },
+
   data() {
     return {
-      error: false,
-      email: "",
+      user:{},
+      email : "",
       password: "",
+      userName: "",
+      fullName: "",
+      idNumber: "",
+      phoneNumber: "",
+      error: false,
       value: true,
       submitted: false,
       valid: false,
       emailRules: [
-        (email) => !!email || "Email is required",
+        (email) => !! email || "Email is required",
         (email) =>
           /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email) ||
           "Email is invalid",
@@ -95,8 +114,21 @@ export default {
   },
   methods: {
     async verifyUser() {
+    this.user = {
+        email : this.email,
+        password: this.password,
 
-        this.$router.push('/catalog')
+        userName: "",
+        fullName: "",
+        idNumber: "",
+        phoneNumber: "",
+
+        rol: "seller",
+        listOfVehicles: {},
+      },
+
+      this.$router.push("/catalog");
+      api.creatUser(this.user)
     },
   },
 };
@@ -116,8 +148,7 @@ export default {
   justify-content: center;
   height: 100vh;
 }
-.font{
+.font {
   background: #0f2032;
-  
 }
 </style>

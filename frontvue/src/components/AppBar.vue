@@ -7,7 +7,6 @@
   >
     <v-app-bar-nav-icon
       class="hidden-md-and-up"
-      @click="toggleDrawer"
     />
 
     <v-container class="mx-auto py-0">
