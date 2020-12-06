@@ -31,7 +31,6 @@ export const api = {
   }),
   getvehicles: handleError(async () => {
     const res = await axios.get(vehiclesURL);
-    console.log(res.data)
     return res.data;
   }),
   deletvehicle: handleError(async id => {
@@ -50,7 +49,6 @@ export const api = {
 
   getUser: handleError(async id => {
     const res = await axios.get(usersURL + id);
-    console.log(res.data)
     return res.data;
   }),
   getUsers: handleError(async () => {
@@ -65,6 +63,7 @@ export const api = {
 
   creatUser: handleError(async payload => {
     const res = await axios.post(usersURL, payload);
+    console.log(res.data)
     return res.data;
   }),
   updateUser: handleError(async payload => {
@@ -76,8 +75,5 @@ export const api = {
     const res = await axios.get(loginURL);
     return res.data;
   }),
-
-
-
 
 };

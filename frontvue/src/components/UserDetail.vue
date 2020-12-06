@@ -1,28 +1,33 @@
 <template>
-    <section class="detail-user">
+  <section class="detail-user">
     <div class="container">
-        <div class="my-cars">
-            <div class="user-txt">
-                <h2>My Information</h2>
-                <p>Name: {{ user.fullName }}</p>
-                <p>Phone: {{ user.phoneNumber }}</p>
-                <p>Email: {{ user.email }}</p>
-            </div>
+      <div class="my-cars">
+        <div class="user-txt">
+          <h2>My Information</h2>
+          <p>Name: {{ user.fullName }}</p>
+          <p>Phone: {{ user.phoneNumber }}</p>
+          <p>Email: {{ user.email }}</p>
         </div>
-        <div grid-list-md fluid>
+      </div>
+      <div grid-list-md fluid>
         <div></div>
-        <v-layout wrap class="my-cars">
-            <v-flex xs20 sm12 md6 lg4 xl3  v-for="vehicle in vehicles" :key="vehicle._id">
-            <section>
-                <div class="container">
-                <app-car :car="vehicle"></app-car>
+        <div class="my-cars">
+          <v-layout wrap>
+            <v-flex xs20 sm12 md6 lg4 xl3 v-for="vehicle in vehicles" :key="vehicle._id">
+              <section>
+                <div>
+                  <app-car :car="vehicle"></app-car>
                 </div>
-            </section>
+              </section>
             </v-flex>
-        </v-layout>
+          </v-layout>
+          <div class ="center">
+            <v-btn class="add" @click="addCar">Add Vehicle to sell</v-btn>
+          </div>
         </div>
+      </div>
     </div>
-    </section>
+  </section>
 </template>
 
 <script>
@@ -42,21 +47,35 @@ export default {
     this.user = await api.getUser("5fc6a8da02fe4574386a9b0f");
     this.vehicles = await this.user.listOfVehicles;
   },
+    methods: {
+    addCar() {
+      this.$router.push("/");
+    },
+  },
 };
 </script>
 
 <style>
-.user-txt{
-    margin-left: 80px;
+.add {
+    background: #fff;
+    border-radius: 10px;
+    font-weight: bolder;
+}
+.center {
+    text-align:center;
+    margin: 25px;
+}
+.user-txt {
+    margin-left: 30px;
     color: white;
 }
-.detail-user{
-    padding: 112px 50px 40%;
+.detail-user {
+    padding: 50px;
 }
 .my-cars {
-  background: #0F2032;
-  padding: 15px 15px 15px;
-  border-radius: 15px;
-  margin: 10px;
+    background: #0f2032;
+    border-radius: 15px;
+    margin: 10px;
+    padding: 10px;
 }
 </style>
