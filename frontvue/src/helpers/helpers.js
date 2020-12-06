@@ -55,6 +55,7 @@ export const api = {
   }),
   getUsers: handleError(async () => {
     const res = await axios.get(usersURL);
+    console.log(res.data)
     return res.data;
   }),
   deletUser: handleError(async id => {

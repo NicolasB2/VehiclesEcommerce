@@ -7,15 +7,15 @@ export default new Vuex.Store({
 
     state:{
         vehicle:{ },
-        seller: { }
+        user: { }
     },
 
     mutations:{
         viewDetails(state,  payload){
             state.vehicle = payload;
         },
-        viewSeller(state,  payload){
-            state.seller = payload;
+        viewUser(state,  payload){
+            state.user = payload;
         }
         
     },
@@ -24,8 +24,8 @@ export default new Vuex.Store({
         viewDetails({commit}, payload){
             commit('viewDetails', payload);
         },
-        viewSeller({commit}, payload){
-            commit('viewSeller', payload);
+        viewUser({commit}, payload){
+            commit('viewUser', payload);
         }
     }
 

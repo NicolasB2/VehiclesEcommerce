@@ -1,50 +1,59 @@
 <template>
- <section class="font" >
-  <div id="Login" >
-    <v-flex class="vux-center">
-      <div class="login-form">
-        <v-card elevation="10" class="form-wrapper">
-          <v-card-title>
-            <div class="display-1 mb-2"> Login</div>
-          </v-card-title>
-          <v-form v-model="valid">
-            <v-text-field
-              prepend-icon="mdi-email"
-              label="Email"
-              required
-              :rules="emailRules"
-              v-model.lazy="email"
-            ></v-text-field>
-            <v-text-field
-              prepend-icon="mdi-lock"
-              autocomplete="current-password"
-              :value="password"
-              label="Enter password"
-              :append-icon="value ? 'mdi-eye' : 'mdi-eye-off'"
-              @click:append="() => (value = !value)"
-              :type="value ? 'password' : 'text'"
-              :rules="passwordRule"
-              v-model="password"
-            ></v-text-field>
-            <v-btn :disabled="!valid" @click="verifyUser" router>Login</v-btn>
-          </v-form>
-        </v-card>
-        <v-dialog v-model="error" max-width="400px">
-          <v-alert type="error"
-            >The user email or password is incorrect</v-alert
-          >
-        </v-dialog>
-      </div>
-    </v-flex>
-  </div>
- </section> 
+  <section class="font">
+    <div id="Login">
+      <v-flex class="vux-center">
+        <div class="login-form">
+          <v-card elevation="10" class="form-wrapper">
+            <v-card-title>
+              <div class="display-1 mb-2">Login</div>
+            </v-card-title>
+            <v-form v-model="valid">
+              <v-text-field
+                prepend-icon="mdi-email"
+                label="Email"
+                required
+                :rules="emailRules"
+                v-model.lazy="email"
+              ></v-text-field>
+              <v-text-field
+                prepend-icon="mdi-lock"
+                autocomplete="current-password"
+                :value="password"
+                label="Enter password"
+                :append-icon="value ? 'mdi-eye' : 'mdi-eye-off'"
+                @click:append="() => (value = !value)"
+                :type="value ? 'password' : 'text'"
+                :rules="passwordRule"
+                v-model="password"
+              ></v-text-field>
+              <v-btn :disabled="!valid" @click="verifyUser" router>Login</v-btn>
+            </v-form>
+          </v-card>
+          <v-dialog v-model="error" max-width="400px">
+            <v-alert type="error"
+              >The user email or password is incorrect</v-alert
+            >
+          </v-dialog>
+        </div>
+      </v-flex>
+    </div>
+  </section>
 </template>
 
 
 <script>
+import { api } from "../helpers/helpers";
+
 export default {
+  props: {
+    user: {
+      type: Object,
+    },
+  },
   data() {
     return {
+      users: [],
+      
       error: false,
       email: "",
       password: "",
@@ -74,9 +83,17 @@ export default {
     };
   },
   methods: {
+    
     async verifyUser() {
-
-        this.$router.push('/catalog')
+      
+      this.users = await api.getUsers();
+      this.users.forEach(element => {
+        if(element.email==this.email){
+          if(element.password==this.password){
+             this.$router.push("/catalog");
+          }
+        }
+      });
     },
   },
 };
@@ -93,8 +110,7 @@ export default {
   justify-content: center;
   height: 100vh;
 }
-.font{
+.font {
   background: #0f2032;
-  
 }
 </style>
