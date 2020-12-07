@@ -37,7 +37,7 @@ We offer you the best service to negotiate your car.
                     mdi-car
                   </v-icon>
 								</div>
-								<h2><a href="#">Find your desired car!!</a></h2>
+								<h2><a href="catalog">Find your desired car!!</a></h2>
 								<p>
 								
 We offer you your desired car at the best possible price.  
@@ -140,10 +140,6 @@ export default {
     left: 50%;
     margin-left: -10px;
 }
-
-.single-service-icon [class^="flaticon-"]:before,.single-service-icon[class*=" flaticon-"]:before,.single-service-icon [class^="flaticon-"]:after,.single-service-icon [class*=" flaticon-"]:after {font-size:60px;}
-.single-service-item:hover .single-service-icon [class^="flaticon-"]:before,.single-service-item:hover .single-service-icon [class*=" flaticon-"]:before,.single-service-item:hover .single-service-icon [class^="flaticon-"]:after,.single-service-item:hover .single-service-icon [class*=" flaticon-"]:after {color:#fff;}
-
 
 .single-service-item:hover h2 a,.single-service-item:hover p{color: #fff;}
 .single-service-item:hover  p:before {background: #fff;}

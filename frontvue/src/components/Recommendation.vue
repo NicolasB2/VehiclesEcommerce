@@ -168,7 +168,7 @@ export default {
         mileage: null,
         engV: null,
         engType: "",
-        registration: false,
+        registration: "no",
         year: null,
         model: "",
         drive: "",
@@ -219,7 +219,7 @@ export default {
       this.form.drive = "";
       this.price = "";
 
-      this.form.registration = false;
+      this.form.registration = "no";
       // Trick to reset/clear native browser form validation state
       this.show = false;
       this.$nextTick(() => {

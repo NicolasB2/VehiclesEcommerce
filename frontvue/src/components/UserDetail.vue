@@ -58,7 +58,7 @@ export default {
 <style>
 .add {
     background: #fff;
-    border-radius: 10px;
+    border-radius: 8px;
     font-weight: bolder;
 }
 .center {
@@ -70,11 +70,23 @@ export default {
     color: white;
 }
 .detail-user {
+     /* The image used */
+  background: url(https://images.unsplash.com/photo-1582733460601-0ae67a942777?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)
+    no-repeat;
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
     padding: 50px;
 }
 .my-cars {
     background: #0f2032;
-    border-radius: 15px;
+    border-radius: 9px 9px 9px 9px;
+    box-shadow: 0px 10px 14px -7px rgba(0,0,0,0.81);
     margin: 10px;
     padding: 10px;
 }
