@@ -3,7 +3,8 @@
     v-scroll="onScroll"
     :color="!isScrolling ? 'black' : 'black'"
     fixed
-    flat
+    dense
+    
   >
     <v-app-bar-nav-icon
       class="hidden-md-and-up"
@@ -15,9 +16,9 @@
           :src="require('@/assets/logo.png')"
           class="mr-5"
           contain
-          height="40"
-          width="40"
-          max-width="48"
+          height="30"
+          width="30"
+          max-width="38"
           @click="$vuetify.goTo(0)"
         />
 
@@ -28,7 +29,7 @@
            :title="item.title"
            text
          >
-          <h4 style="color: white">{{ item.text }}</h4>
+          <h6 style="color: white;    margin-top: 6px;">{{ item.text }}</h6>
         </v-btn>
 
         <v-spacer />
@@ -40,7 +41,7 @@
            :title="item.title"
            text
          >
-          <h4 style="color: white">{{ item.text }}</h4>
+          <h6 style="color: white;    margin-top: 6px;">{{ item.text }}</h6>
         </v-btn>
 
       </v-row>
@@ -64,12 +65,6 @@
           to: "/",
           title: 'Home',
           active: true
-        },
-        {
-          text: 'Service',
-          to: "/service",
-          title: 'Service',
-          active: false
         },
           {
           text: 'Catalog',

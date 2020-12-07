@@ -3,6 +3,12 @@ import App from './App.vue'
 import vuetify from '@/plugins/vuetify'
 import VueRouter from 'vue-router';
 import store from './store';
+import { BootstrapVue} from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+// Install BootstrapVue
+Vue.use(BootstrapVue)
 
 import Home from './components/Home';
 import Vehicles from './components/Vehicles';
@@ -10,6 +16,7 @@ import DetailVehicle from './components/DetailVehicle';
 import Login from './components/Login';
 import Register from './components/Register';
 import UserDatail from './components/UserDetail';
+import Recommendation from './components/Recommendation';
 
 
 const routes = [
@@ -36,6 +43,9 @@ const routes = [
   {
     path: '/userdetail',
     component: UserDatail
+  },{
+    path: '/recommendation',
+    component: Recommendation
   },
 ]
 

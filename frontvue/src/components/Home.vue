@@ -11,7 +11,9 @@
     </section>
 
 <section id="service" class="service">
+  
 			<div class="container">
+        
 				<div class="service-content">
 					<div class="row">
 						<div class="col-md-4 col-sm-6">
@@ -21,9 +23,10 @@
                     mdi-car-connected
                   </v-icon>
 								</div>
-								<h2><a href="#">largest dealership <span> of</span> car</a></h2>
+								<h2><a href="#">sell your <span></span> car!!</a></h2>
 								<p>
-									Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut den fugit sed quia.  
+									
+We offer you the best service to negotiate your car.  
 								</p>
 							</div>
 						</div>
@@ -34,9 +37,10 @@
                     mdi-car
                   </v-icon>
 								</div>
-								<h2><a href="#">unlimited repair warrenty</a></h2>
+								<h2><a href="#">Find your desired car!!</a></h2>
 								<p>
-									Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut den fugit sed quia.  
+								
+We offer you your desired car at the best possible price.  
 								</p>
 							</div>
 						</div>
@@ -47,9 +51,10 @@
                     mdi-camera-timer
                   </v-icon>
 								</div>
-								<h2><a href="#">insurence support</a></h2>
+								<h2><a href="recommendation">Find out the real price!!</a></h2>
 								<p>
-									Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut den fugit sed quia. 
+									
+We offer you a price service for your car.
 								</p>
 							</div>
 						</div>
@@ -75,7 +80,7 @@ export default {
     background:url(https://images.unsplash.com/photo-1597404294360-feeeda04612e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)no-repeat;
     background-position: center;
     background-size: cover;
-    
+    box-shadow: 0px 10px 14px -7px rgba(0,0,0,0.81);
     z-index: 1;
 }
 
@@ -84,7 +89,7 @@ export default {
 /*.welcome-hero-txt*/
 .welcome-hero-txt{text-align: center;padding:330px 0 372px;}
 .welcome-hero-txt h1 {
-    font-size: 42px;
+    font-size: 40px;
     color: #fff;
     font-weight: 700;
     text-transform: uppercase;
@@ -96,7 +101,7 @@ export default {
      1px 1px 0 #000;
 }
 
-.service { padding: 200px 0 80px;}
+.service { padding:  120px  80px;}
 
 .single-service-item{
     text-align: center;
@@ -124,7 +129,7 @@ export default {
     margin: 35px 0 20px;
 }
 .single-service-item h2 a span {text-transform:  lowercase;}
-.single-service-item p {padding-bottom: 35px;text-transform: initial;position: relative;}
+.single-service-item p { font-size: 20px; padding-bottom: 35px;text-transform: initial;position: relative;}
 .single-service-item p:before {
     position: absolute;
     content: "";
