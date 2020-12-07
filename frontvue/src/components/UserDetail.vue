@@ -1,6 +1,6 @@
 <template>
   <section class="detail-user">
-    <div class="container">
+    <div class="catalog">
       <div class="my-cars">
         <div class="user-txt">
           <h2>My Information</h2>

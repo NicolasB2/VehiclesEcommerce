@@ -1,10 +1,10 @@
 <template>
   <section class="catalog-cars">
-    <div class="container">
+    <div class="catalog">
       <div grid-list-md fluid>
         <div></div>
         <v-layout wrap>
-          <v-flex xs20 sm12 md6 lg4 xl3 v-for="vehicle in vehicles" :key="vehicle._id">
+          <v-flex xs20 sm13 md6 lg4 xl3 v-for="vehicle in vehicles" :key="vehicle._id">
             <section>
               <div class="container">
                 <app-car :car="vehicle"></app-car>
@@ -49,5 +49,9 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   padding: 112px 0 40%;
+}
+.catalog {
+  padding-left: 12%;
+  padding-right: 12%
 }
 </style>
