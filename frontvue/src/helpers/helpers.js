@@ -51,7 +51,6 @@ export const api = {
     const res = await axios.delete(vehiclesURL + id);
     return res.data;
   }),
-
   creatvehicle: handleError(async payload => {
     const res = await axios.post(vehiclesURL, payload);
     return res.data;
@@ -60,6 +59,7 @@ export const api = {
     const res = await axios.put(vehiclesURL + payload._id, payload);
     return res.data;
   }),
+
 
   getUser: handleError(async id => {
     const res = await axios.get(usersURL + id);
@@ -73,7 +73,6 @@ export const api = {
     const res = await axios.delete(usersURL + id);
     return res.data;
   }),
-
   creatUser: handleError(async payload => {
     const res = await axios.post(usersURL, payload);
     console.log(res.data)
@@ -84,6 +83,9 @@ export const api = {
     return res.data;
   }),
 
+  deleteUserLogged() {
+    Cookies.remove('userLogged');
+  },
   setUserLogged(userLogged) {
     Cookies.set("userLogged", userLogged);
   },
@@ -96,7 +98,6 @@ export const api = {
     } catch (error) {
       return ""
     }
-   
   },
 
   login(email, password) {

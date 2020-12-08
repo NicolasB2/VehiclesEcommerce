@@ -7,6 +7,7 @@
           <p>Name: {{ user.fullName }}</p>
           <p>Phone: {{ user.phoneNumber }}</p>
           <p>Email: {{ user.email }}</p>
+          <v-btn @click="logout"> logOut </v-btn>
         </div>
       </div>
       <div grid-list-md fluid>
@@ -52,6 +53,10 @@ export default {
     addCar() {
       this.$router.push("/sell");
     },
+    logout(){
+      api.deleteUserLogged();
+      this.$router.push("/login");
+    }
   },
 };
 </script>

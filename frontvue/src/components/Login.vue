@@ -116,21 +116,25 @@ export default {
     };
   },
   methods: {
-    async getUserData() {
-      await this.FB.api("/me", "GET", { fields: "id,name,email,picture" }, (user) => {
+    getUserData() {
+      this.FB.api("/me", "GET", { fields: "id,name,email,picture" }, (user) => {
         this.personalID = user.id;
         this.email = user.email;
         this.name = user.name;
         this.picture = user.picture.data.url;
+        this.password = user.id;
       });
 
-      var user = {
-        email: this.email,
-        userName: this.name,
-        rol: "seller",
-      };
-
-      await api.creatUser(user);
+      if(this.isConnected){
+        console.log("crear face")
+          api.creatUser(
+          {
+            userName:this.name,
+            password:this.password,
+            email:this.email,
+            rol: "seller",
+          });
+      }
     },
     sdkLoaded(payload) {
       this.isConnected = payload.isConnected;
