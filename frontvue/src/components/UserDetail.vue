@@ -49,7 +49,7 @@ export default {
   },
     methods: {
     addCar() {
-      this.$router.push("/");
+      this.$router.push("/sell");
     },
   },
 };

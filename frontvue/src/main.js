@@ -17,6 +17,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import UserDatail from './components/UserDetail';
 import Recommendation from './components/Recommendation';
+import Sell from './components/Seller';
 
 
 const routes = [
@@ -43,9 +44,14 @@ const routes = [
   {
     path: '/userdetail',
     component: UserDatail
-  },{
+  },
+  {
     path: '/recommendation',
     component: Recommendation
+  },
+  {
+    path: '/sell',
+    component: Sell
   },
 ]
 

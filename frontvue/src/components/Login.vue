@@ -149,6 +149,7 @@ export default {
                  email: this.email
                };
                api.setUserLogged(user);
+               console.log(api.getUserLogged())
                this.$router.push("/catalog");
   
             }

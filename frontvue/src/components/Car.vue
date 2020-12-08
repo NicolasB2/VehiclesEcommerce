@@ -9,7 +9,10 @@
           <div class="featured-model-info">
             <div class="featured-cars-txt">
               <h2>{{ car.car }}</h2>
-              <h2>$ {{ car.price }}</h2>
+              <h2>{{ (car.price ).toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                })}}</h2>
               <h3>year : {{ car.year }}</h3>
               <h3>model : {{ car.model }}</h3>
             </div>
@@ -49,7 +52,7 @@ export default {
   border-radius: 45px;
 }
 .featured-cars {
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 112px 0 120px;
 }
 .featured-cars-content {
@@ -58,7 +61,7 @@ export default {
 
 /*.single-featured-cars*/
 .featured-img-box {
-  border-radius: 15px;
+  border-radius: 10px;
   background: white;
 }
 
@@ -68,7 +71,7 @@ export default {
   justify-content: center;
   height: 220px;
   border-bottom: 1px solid #dadfe9;
-  border-radius: 15px;
+  border-radius: 8px;
 }
 .featured-model-info {
   padding: 12px 7px;
@@ -116,7 +119,7 @@ export default {
 }
 .single-catalog-item {
   background: #fff;
-  border: 10px solid #fff;
+  border: 8px solid #fff;
 }
 
 .single-catalog-item:hover h2 a,
@@ -128,6 +131,6 @@ export default {
 }
 .single-catalog-item:hover {
   background: #4b4949;
-  border: 10px solid #4b4949;
+  border: 8px solid #4b4949;
 }
 </style>

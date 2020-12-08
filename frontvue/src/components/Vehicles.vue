@@ -51,7 +51,7 @@ export default {
   padding: 112px 0 40%;
 }
 .catalog {
-  padding-left: 12%;
+  padding-left: 10%;
   padding-right: 12%
 }
 </style>
