@@ -29,6 +29,10 @@
           <h6 style="color: white; margin-top: 6px">Register</h6>
         </v-btn>
 
+        <v-btn v-if="this.userId !== '' " @click="logout"  text>
+          <h6 style="color: white; margin-top: 6px">Logout</h6>
+        </v-btn>
+        
         <v-btn v-if="this.userId !== ''  && this.user.rol == 'seller' " router :to="{ path: '/userdetail' }" text>
           <h6 style="color: white; margin-top: 6px">User Detail</h6>
         </v-btn>
@@ -58,7 +62,10 @@ export default {
     this.leerCookie();
   },
   methods: {
-
+    logout(){
+      api.deleteUserLogged();
+      this.$router.push("/login");
+    },
     onScroll() {
       const offset = window.pageYOffset;
       this.isScrolling = offset > 50;

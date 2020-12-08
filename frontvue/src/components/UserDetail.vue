@@ -8,7 +8,6 @@
           <p>Name: {{ user.fullName }}</p>
           <p>Phone: {{ user.phoneNumber }}</p>
           <p>Email: {{ user.email }}</p>
-          <v-btn @click="logout"> logOut </v-btn>
         </div>
       </div>
       <div grid-list-md fluid>
@@ -24,7 +23,6 @@
             </v-flex>
           </v-layout>
           <div class ="center">
-            <v-btn class="add" @click="addCar">Add Vehicle to sell</v-btn>
           </div>
         </div>
       </div>
@@ -56,10 +54,6 @@ export default {
     addCar() {
       this.$router.push("/sell");
     },
-    logout(){
-      api.deleteUserLogged();
-      this.$router.push("/login");
-    }
   },
 };
 </script>
