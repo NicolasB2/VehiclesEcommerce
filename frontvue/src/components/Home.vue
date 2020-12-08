@@ -1,4 +1,5 @@
 <template>
+<!--/.service-->
   <div>
      <AppBar/>
     <section id="home" class="welcome-hero">
@@ -45,9 +46,9 @@
           </div>
         </div>
       </div>
-      <!--/.container-->
+      
     </section>
-    <!--/.service-->
+    
   </div>
 </template>
 

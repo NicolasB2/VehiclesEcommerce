@@ -9,15 +9,7 @@
 
     <v-container class="mx-auto py-0">
       <v-row align="center">
-        <v-img
-          :src="require('@/assets/logo.png')"
-          class="mr-5"
-          contain
-          height="30"
-          width="30"
-          max-width="38"
-          @click="$vuetify.goTo(0)"
-        />
+    
 
         <v-btn router :to="{ path: '/' }" text>
           <h6 style="color: white; margin-top: 6px">Home</h6>
