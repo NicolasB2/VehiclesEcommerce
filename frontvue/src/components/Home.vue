@@ -1,5 +1,6 @@
 <template>
   <div>
+     <AppBar/>
     <section id="home" class="welcome-hero">
       <div class="container">
         <div class="welcome-hero-txt">
@@ -52,9 +53,11 @@
 
 
 <script>
+import AppBar from './AppBar';
 export default {
-  name: "Home",
-};
+  components:{
+  AppBar
+  }}
 </script>
 
 <style>

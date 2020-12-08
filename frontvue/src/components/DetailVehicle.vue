@@ -1,5 +1,6 @@
 <template>
   <section id="new-cars" class="new-cars">
+    <AppBar/>
     <v-container class="grey lighten-5">
       <v-btn color="primary" text @click="back"> Back </v-btn>
       <div class="section-header">
@@ -108,8 +109,10 @@
 
 <script>
 import { api } from "../helpers/helpers";
-
+import AppBar from './AppBar';
 export default {
+  components:{
+  AppBar,},
   data() {
     return {
       dialog: false,

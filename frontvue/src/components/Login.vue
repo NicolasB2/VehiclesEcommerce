@@ -1,5 +1,6 @@
 <template>
   <section class="font">
+    <AppBar/>
     <div id="Login">
       <v-flex class="vux-center">
         <div class="login-form">
@@ -68,9 +69,11 @@
 <script>
 import { api } from "../helpers/helpers";
 import facebookLogin from 'facebook-login-vuejs'
+import AppBar from './AppBar';
 export default {
-  components: {
-    facebookLogin
+  components:{
+  AppBar,
+  facebookLogin
   },
   props: {
     user: {
