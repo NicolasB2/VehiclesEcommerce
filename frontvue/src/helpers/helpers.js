@@ -69,7 +69,6 @@ export const api = {
   }),
   getUsers: handleError(async () => {
     const res = await axios.get(usersURL);
-    console.log(res.data)
     return res.data;
   }),
   deletUser: handleError(async id => {
@@ -91,7 +90,8 @@ export const api = {
     Cookies.set("userLogged", userLogged);
   },
   getUserLogged() {
-    return Cookies.get("userLogged");
+    var obj = JSON.parse(Cookies.get("userLogged"));
+    return obj._id;
   },
 
   login(email, password) {

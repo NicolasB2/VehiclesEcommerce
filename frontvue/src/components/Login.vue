@@ -79,7 +79,7 @@ export default {
   },
   data() {
     return {
-         isConnected: false,
+    isConnected: false,
     name: '',
     personalID: '',
     picture: '',
@@ -146,10 +146,9 @@ export default {
             if(element.password==this.password){
                api.login(this.email,this.password)
                const user = {
-                 email: this.email
+                 _id:element._id
                };
                api.setUserLogged(user);
-               console.log(api.getUserLogged())
                this.$router.push("/catalog");
   
             }
