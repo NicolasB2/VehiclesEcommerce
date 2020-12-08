@@ -51,7 +51,6 @@ export default {
     user: {},
     userId : {},
     micookie: {},
-    showLogo: false,
     isScrolling: false,
   }),
   created: function () {
