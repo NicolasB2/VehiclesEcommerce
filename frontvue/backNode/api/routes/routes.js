@@ -15,7 +15,7 @@ router.get("/vehicles/", vehicle_controller.listAllVehicles)
 router.post("/vehicles/", vehicle_controller.createVehicle) 
 router.get('/vehicles/:vehicleId', vehicle_controller.readVehicle)
 router.put("/vehicles/:vehicleId", vehicle_controller.updateVehicle) 
-router.delete("/vehicles/:vehicleId", vehicle_controller.deleteVehicle)  
+router.delete("/vehicles/:vehicleId", vehicle_controller.deleteVehicle)
 
 router.get("/users/", user_controller.listAllUsers) 
 router.post("/users/", user_controller.createUser) 

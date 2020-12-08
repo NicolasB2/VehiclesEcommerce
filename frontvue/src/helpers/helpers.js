@@ -33,6 +33,18 @@ export const api = {
     const res = await axios.get(vehiclesURL + id);
     return res.data;
   }),
+  getvehiclesbyuser: handleError(async id => {
+    let byuser = [];
+    const res = await axios.get(vehiclesURL);
+    res.data.forEach(element => {
+      if(element.idSeller===id){
+        byuser.push(element)
+        console.log(element);
+      }
+    });
+    console.log(res.data)
+    return byuser;
+  }),
   getvehicles: handleError(async () => {
     const res = await axios.get(vehiclesURL);
     return res.data;

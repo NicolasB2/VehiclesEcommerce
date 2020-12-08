@@ -1,21 +1,21 @@
 <template>
   <div class="container">
     <div class="single-featured-cars">
-      <div class="featured-img-box single-catalog-item" @click="viewDetails">
-        <div class="featured-cars-img">
-          <v-img :src="car.img" class="featured-cars-img"> </v-img>
-        </div>
-        <div class="featured-model-info">
-          <div class="featured-cars-txt">
-            <h2>{{ car.car }}</h2>
-            <h2>$ {{ car.price }}</h2>
-            <h3>year : {{ car.year }}</h3>
-            <h3>model : {{ car.model }}</h3>
-            <v-btn color="error" dark @click="deletedCar">
-              deleted
-            </v-btn>
+      <div class="featured-img-box single-catalog-item">
+        <div @click="viewDetails">
+          <div class="featured-cars-img">
+            <v-img :src="car.img" class="featured-cars-img"> </v-img>
+          </div>
+          <div class="featured-model-info">
+            <div class="featured-cars-txt">
+              <h2>{{ car.car }}</h2>
+              <h2>$ {{ car.price }}</h2>
+              <h3>year : {{ car.year }}</h3>
+              <h3>model : {{ car.model }}</h3>
+            </div>
           </div>
         </div>
+        <v-btn color="error"  class="deleted_btn" @click="deletedCar"> deleted </v-btn>
       </div>
     </div>
   </div>
@@ -24,7 +24,6 @@
 <script>
 import { api } from "../helpers/helpers";
 export default {
-  
   props: {
     car: {
       type: Object,
@@ -37,19 +36,24 @@ export default {
     },
     deletedCar() {
       api.deletvehicle(this.car._id);
-      this.$router.push("/userdetail");
     },
   },
 };
 </script>
 
 <style>
+.deleted_btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 45px;
+}
 .featured-cars {
   border-radius: 15px;
   padding: 112px 0 120px;
 }
 .featured-cars-content {
-  padding-top: 96px;
+  padding-top: 90px;
 }
 
 /*.single-featured-cars*/
@@ -84,7 +88,6 @@ export default {
 }
 .featured-cars-txt {
   margin: 21px 0 30px;
-  padding: 8px;
 }
 .featured-cars-txt h2 a {
   font-size: 20px;
@@ -101,14 +104,30 @@ export default {
   font-size: 18px;
 }
 .single-catalog-item p:before {
-    background: #89f0d9;
+  background: #89f0d9;
 }
 
-.single-catalog-item h2 a,.single-catalog-item {color:black}
-.single-catalog-item p:before {background: #4b4949;}
-.single-catalog-item {background: #fff; border: 10px solid #fff}
+.single-catalog-item h2 a,
+.single-catalog-item {
+  color: black;
+}
+.single-catalog-item p:before {
+  background: #4b4949;
+}
+.single-catalog-item {
+  background: #fff;
+  border: 10px solid #fff;
+}
 
-.single-catalog-item:hover h2 a,.single-catalog-item:hover {color:#fff}
-.single-catalog-item:hover p:before {background: #fff;}
-.single-catalog-item:hover {background: #4b4949; border: 10px solid #4b4949}
+.single-catalog-item:hover h2 a,
+.single-catalog-item:hover {
+  color: #fff;
+}
+.single-catalog-item:hover p:before {
+  background: #fff;
+}
+.single-catalog-item:hover {
+  background: #4b4949;
+  border: 10px solid #4b4949;
+}
 </style>

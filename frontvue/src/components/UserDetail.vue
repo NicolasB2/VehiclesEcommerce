@@ -45,7 +45,7 @@ export default {
   },
   async mounted() {
     this.user = await api.getUser("5fc6a8da02fe4574386a9b0f");
-    this.vehicles = await this.user.listOfVehicles;
+    this.vehicles = await api.getvehiclesbyuser("5fc6a8da02fe4574386a9b0f");
   },
     methods: {
     addCar() {
