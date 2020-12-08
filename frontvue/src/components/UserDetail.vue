@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import Car from "./Car";
+import Car from "./CarDetail";
 import { api } from "../helpers/helpers";
 export default {
   components: {

@@ -18,6 +18,7 @@
             </div>
           </div>
         </div>
+        <v-btn v-if="this.userId !== ''" color="error"  class="deleted_btn" @click="deletedCar"> deleted </v-btn>
       </div>
     </div>
   </div>
@@ -26,10 +27,16 @@
 <script>
 import { api } from "../helpers/helpers";
 export default {
+  data: () => ({
+    userId : {},
+  }),
   props: {
     car: {
       type: Object,
     },
+  },
+  mounted(){
+     this.userId = api.getUserLogged();
   },
   methods: {
     viewDetails() {

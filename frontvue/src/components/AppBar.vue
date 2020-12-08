@@ -19,7 +19,7 @@
           @click="$vuetify.goTo(0)"
         />
 
-        <v-btn  router :to="{ path: '/' }" text>
+        <v-btn router :to="{ path: '/' }" text>
           <h6 style="color: white; margin-top: 6px">Home</h6>
         </v-btn>
 
@@ -29,15 +29,15 @@
 
         <v-spacer />
 
-        <v-btn router :to="{ path: '/login' }" text>
+        <v-btn v-if="this.userId === ''" router :to="{ path: '/login' }" text>
           <h6 style="color: white; margin-top: 6px">Login</h6>
         </v-btn>
 
-        <v-btn router :to="{ path: '/register' }" text>
+        <v-btn v-if="this.userId === ''" router :to="{ path: '/register' }" text>
           <h6 style="color: white; margin-top: 6px">Registro</h6>
         </v-btn>
 
-        <v-btn router :to="{ path: '/userdetail' }" text>
+        <v-btn v-if="this.userId !== ''" router :to="{ path: '/userdetail' }" text>
           <h6 style="color: white; margin-top: 6px">User Detail</h6>
         </v-btn>
       </v-row>
@@ -52,16 +52,17 @@ import { api } from "../helpers/helpers";
 export default {
   name: "CoreAppBar",
   data: () => ({
-    listac : {},
+    userId : {},
     micookie: {},
     showLogo: false,
     isScrolling: false,
   }),
   created: function () {
-    this.leerCookie("nico@hotmail.com");
+    this.leerCookie();
+    console.log(this.userId)
   },
-
   methods: {
+
     onScroll() {
       const offset = window.pageYOffset;
       this.isScrolling = offset > 50;
@@ -69,8 +70,7 @@ export default {
     },
 
     leerCookie() {
-      this.listac = api.getUserLogged();
-      console.log(this.listac)
+      this.userId = api.getUserLogged();
     },
   },
 };

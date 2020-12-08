@@ -90,8 +90,15 @@ export const api = {
     Cookies.set("userLogged", userLogged);
   },
   getUserLogged() {
-    var obj = JSON.parse(Cookies.get("userLogged"));
-    return obj._id;
+    try {
+
+      var obj = JSON.parse(Cookies.get("userLogged"));
+      return obj._id;
+
+    } catch (error) {
+      return ""
+    }
+   
   },
 
   login(email, password) {
