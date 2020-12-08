@@ -18,6 +18,7 @@ import Register from './components/Register';
 import UserDatail from './components/UserDetail';
 import Recommendation from './components/Recommendation';
 import Sell from './components/Seller';
+import Reports from './components/Reports';
 
 
 const routes = [
@@ -52,6 +53,10 @@ const routes = [
   {
     path: '/sell',
     component: Sell
+  },
+  {
+    path: '/reports',
+    component: Reports
   },
 ]
 
