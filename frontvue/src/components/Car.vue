@@ -39,6 +39,7 @@ export default {
     },
     deletedCar() {
       api.deletvehicle(this.car._id);
+      location.reload();
     },
   },
 };
