@@ -125,6 +125,7 @@ export default {
     this.seller = await api.getUser(this.vehicle.idSeller);
   },
   methods: {
+    // return to catalog
     back (){ 
       this.$router.push("/catalog");
     }

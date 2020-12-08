@@ -253,7 +253,9 @@ export default {
           console.log("entrooo")
       this.componentKey += 1;
     }
-  },created() {
+  },
+  // consume the pyton service to predict the price
+  created() {
        axios.get('https://cars-flask-model.herokuapp.com/').then(response => {
           var numero =response.data.results.metric;
             var conDecimal = numero.toFixed(4)*100; 

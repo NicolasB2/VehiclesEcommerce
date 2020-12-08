@@ -31,6 +31,8 @@ export default {
     },
   },
   methods: {
+
+    // go to vehicle detail
     viewDetails() {
       this.$store.dispatch("viewDetails", this.car);
       this.$router.push("/cardetail");

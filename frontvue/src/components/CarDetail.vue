@@ -18,7 +18,7 @@
             </div>
           </div>
         </div>
-        <v-btn v-if="this.userId !== ''" color="error"  class="deleted_btn" @click="deletedCar"> deleted </v-btn>
+        <v-btn v-if="this.userId !== ''" color="error"  class="deleted_btn" @click="deletedCar"> Sold </v-btn>
       </div>
     </div>
   </div>
@@ -39,10 +39,12 @@ export default {
      this.userId = api.getUserLogged();
   },
   methods: {
+    // Go to vehicle detail
     viewDetails() {
       this.$store.dispatch("viewDetails", this.car);
       this.$router.push("/cardetail");
     },
+    // change car State to sold, logic delated
     deletedCar() {
       this.car.state = "sold";
       api.updatevehicle(this.car,this.car._id);

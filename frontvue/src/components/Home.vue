@@ -69,6 +69,7 @@ export default {
     this.leerCookie();
   },
   methods:{
+    // read userId from cookies
 async leerCookie() {
       this.userId = api.getUserLogged();
       this.user = await api.getUser(this.userId);

@@ -23,6 +23,7 @@
             </v-flex>
           </v-layout>
           <div class ="center">
+            <v-btn class="add" @click="addCar">Add Vehicle to sell</v-btn>
           </div>
         </div>
       </div>

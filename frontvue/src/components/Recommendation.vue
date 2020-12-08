@@ -182,6 +182,7 @@ export default {
     };
   },
   methods: {
+    // consume python service from heroku, for predict the price
     async onSubmit(evt) {
       evt.preventDefault();
       var info = this.form
@@ -210,6 +211,7 @@ export default {
         });
       
     },
+    // reset all fields
     onReset(evt) {
       evt.preventDefault();
       // Reset our form values

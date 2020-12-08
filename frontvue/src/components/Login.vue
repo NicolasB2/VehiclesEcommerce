@@ -102,6 +102,7 @@ export default {
     };
   },
   methods: {
+    // load user information
     async getUserData() {
       await this.FB.api("/me", "GET", { fields: "id,name,email,picture" }, (user) => {
         this.personalID = user.id;
@@ -112,18 +113,22 @@ export default {
       });
       //this.verifyUser();
     },
+    //connect with facebook
     sdkLoaded(payload) {
       this.isConnected = payload.isConnected;
       this.FB = payload.FB;
       if (this.isConnected) this.getUserData();
     },
+    // log in service
     onLogin() {
       this.isConnected = true;
       this.getUserData();
     },
+    //log out service
     onLogout() {
       this.isConnected = false;
     },
+    // Added new user when its the first time with facebook
     async addUser(){
       if(this.isConnected){
         console.log("crear face")
@@ -137,6 +142,7 @@ export default {
           });
       }
     },
+    // verify if the user is already exist, comparing email and password
     async verifyUser() {
       try {
         this.users = await api.getUsers();

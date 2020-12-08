@@ -118,6 +118,7 @@ export default {
     };
   },
   methods: {
+    // Added the new user to mongo db
     async verifyUser() {
     this.user = {
         email : this.email,

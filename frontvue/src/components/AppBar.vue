@@ -61,16 +61,20 @@ export default {
     this.leerCookie();
   },
   methods: {
+    // user log out
     logout(){
       api.deleteUserLogged();
-      this.$router.push("/home");
+      this.$router.push("/");
     },
+
+    // change image whe user scroll down
     onScroll() {
       const offset = window.pageYOffset;
       this.isScrolling = offset > 50;
       this.showLogo = offset > 200;
     },
 
+  // read userId from cookies
     async leerCookie() {
       this.userId = api.getUserLogged();
       this.user = await api.getUser(this.userId);
