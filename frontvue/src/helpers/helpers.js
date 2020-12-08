@@ -3,6 +3,10 @@ import axios from 'axios';
 import Vue from 'vue';
 import VueFlashMessage from 'vue-flash-message';
 import 'vue-flash-message/dist/vue-flash-message.min.css';
+import Cookies from "js-cookie";
+
+const ENDPOINT_PATH = "https://reqres.in/api/";
+
 
 Vue.use(VueFlashMessage, {
   messageOptions: {
@@ -70,6 +74,18 @@ export const api = {
     const res = await axios.put(usersURL + payload._id, payload);
     return res.data;
   }),
+
+  setUserLogged(userLogged) {
+    Cookies.set("userLogged", userLogged);
+  },
+  getUserLogged() {
+    return Cookies.get("userLogged");
+  },
+
+  login(email, password) {
+    const user = { email, password };
+    return axios.post(ENDPOINT_PATH + "login", user);
+  },
   
   loginFacebook: handleError(async ()=> {
     const res = await axios.get(loginURL);
