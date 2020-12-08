@@ -9,7 +9,6 @@
             </v-card-title>
             <hr />
             <b-form @submit="onSubmit" v-if="show">
-            
               <b-row>
                 <b-col>
                   <b-form-group
@@ -134,7 +133,7 @@
                   </b-form-group>
                 </b-col>
               </b-row>
-<b-row>
+              <b-row>
                 <b-col>
                   <b-form-group
                     id="input-group-7"
@@ -152,13 +151,14 @@
                   </b-form-group>
                 </b-col>
                 <b-col>
-                
-                 <b-form-group
+                  <b-form-group
                     id="input-group-7"
                     label=" Price Recommendation:"
                     label-for="input-2"
                   >
-                    <b-button type="modal" variant="success">Price for your Car</b-button>
+                    <b-button type="modal" variant="success"
+                      >Price for your Car</b-button
+                    >
                   </b-form-group>
                 </b-col>
               </b-row>
@@ -171,11 +171,9 @@
                   >Your car is registered?</b-form-checkbox
                 >
               </b-form-group>
-              
+
               <b-button @click="addVehicle" variant="primary">Submit</b-button>
-              
             </b-form>
-            
           </v-card>
         </div>
       </v-flex>
@@ -185,7 +183,7 @@
 
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 import { api } from "../helpers/helpers";
 export default {
   data() {
@@ -201,63 +199,64 @@ export default {
         model: "",
         drive: "",
         price: "",
-        
       },
-      img:"",
+      img: "",
       show: true,
     };
   },
   methods: {
     async onSubmit(evt) {
       evt.preventDefault();
-      var info = this.form
-      var num1 = parseFloat(info.mileage)
-      var num2 = parseFloat(info.engV)
-      var num3 = parseInt(info.year)
-       await axios.post('https://cars-flask-model.herokuapp.com/', {
-           car: info.car,
-            body: info.body,
-            mileage: num1,
-            engV: num2,
-            engType: info.engType,
-            registration: info.registration,
-            year: num3,
-            model: info.model,
-            drive: info.drive,
-            price: 0 
-       }).then(response => {
-            console.log(response.data)
-            this.form.price = response.data.results.price;
-        }).catch(e => {
-            console.log(e);
+      var info = this.form;
+      var num1 = parseFloat(info.mileage);
+      var num2 = parseFloat(info.engV);
+      var num3 = parseInt(info.year);
+      await axios
+        .post("https://cars-flask-model.herokuapp.com/", {
+          car: info.car,
+          body: info.body,
+          mileage: num1,
+          engV: num2,
+          engType: info.engType,
+          registration: info.registration,
+          year: num3,
+          model: info.model,
+          drive: info.drive,
+          price: 0,
+        })
+        .then((response) => {
+          console.log(response.data);
+          this.form.price = response.data.results.price;
+        })
+        .catch((e) => {
+          console.log(e);
         });
-      
     },
     addVehicle() {
-        this.img = '@/assets/logos/'+this.form.car+'.png'
-            var info = this.form
-      var num1 = parseFloat(info.mileage)
-      var num2 = parseFloat(info.engV)
-      var num3 = parseInt(info.year)
-      var num4 = parseFloat(info.price)
-        api.creatvehicle({
-            car: info.car,
-            body: info.body,
-            mileage: num1,
-            engV: num2,
-            engType: info.engType,
-            registration: info.registration,
-            year: num3,
-            model: info.model,
-            drive: info.drive,
-            price: num4,
-            state: "",
-            img: this.img,
-            idSeller: ""
-        })
-        alert('Car added to sell!!')
-    
-  },
+      var userId = api.getUserLogged();
+      this.img = "@/assets/logos/" + this.form.car + ".png";
+      var info = this.form;
+      var num1 = parseFloat(info.mileage);
+      var num2 = parseFloat(info.engV);
+      var num3 = parseInt(info.year);
+      var num4 = parseFloat(info.price);
+      api.creatvehicle({
+        car: info.car,
+        body: info.body,
+        mileage: num1,
+        engV: num2,
+        engType: info.engType,
+        registration: info.registration,
+        year: num3,
+        model: info.model,
+        drive: info.drive,
+        price: num4,
+        state: "onSale",
+        img: this.img,
+        idSeller: userId,
+      });
+      this.$router.push("/userdetail");
+    },
   },
 };
 </script>
@@ -277,7 +276,7 @@ export default {
 
 .font {
   /* The image used */
-  
+
   background: url(https://images.unsplash.com/photo-1539720473538-74cabbc4f113?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2400&q=1600)
     no-repeat;
 
