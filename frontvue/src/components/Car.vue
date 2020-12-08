@@ -11,6 +11,9 @@
             <h2>$ {{ car.price }}</h2>
             <h3>year : {{ car.year }}</h3>
             <h3>model : {{ car.model }}</h3>
+            <v-btn color="error" dark @click="deletedCar">
+              deleted
+            </v-btn>
           </div>
         </div>
       </div>
@@ -19,7 +22,9 @@
 </template>
 
 <script>
+import { api } from "../helpers/helpers";
 export default {
+  
   props: {
     car: {
       type: Object,
@@ -29,6 +34,10 @@ export default {
     viewDetails() {
       this.$store.dispatch("viewDetails", this.car);
       this.$router.push("/cardetail");
+    },
+    deletedCar() {
+      api.deletvehicle(this.car._id);
+      this.$router.push("/userdetail");
     },
   },
 };

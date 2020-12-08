@@ -23,7 +23,7 @@ app.use(cookieParser());
 app.use(bodyParser());
 app.use(express.static(path.join(__dirname, 'public')));
 var cors = require('cors');
-app.use(cors({origin: 'http://localhost:8080'}));
+app.use(cors({origin: 'https://localhost:8080'}));
 require("./api/routes/passport")(passport);
 
 app.use(passport.initialize());
