@@ -26,7 +26,7 @@
         </v-btn>
 
         <v-btn v-if="this.userId === ''" router :to="{ path: '/register' }" text>
-          <h6 style="color: white; margin-top: 6px">Registro</h6>
+          <h6 style="color: white; margin-top: 6px">Register</h6>
         </v-btn>
 
         <v-btn v-if="this.userId !== ''  && this.user.rol == 'seller' " router :to="{ path: '/userdetail' }" text>

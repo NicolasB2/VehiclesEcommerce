@@ -154,7 +154,7 @@ export default {
         });
 
         if(this.isConnected){
-          api.creatUser(
+          var userAnswer = await api.creatUser(
           {
             userName:this.name,
             fullName:this.name,
@@ -162,6 +162,8 @@ export default {
             email:this.email,
             rol: "seller",
           });
+      api.setUserLogged(userAnswer);
+      this.$router.push("/catalog");
       }
       } catch (error) {
         console.log(error);

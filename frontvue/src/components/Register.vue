@@ -122,17 +122,16 @@ export default {
     this.user = {
         email : this.email,
         password: this.password,
-
-        userName: "",
-        fullName: "",
-        idNumber: "",
-        phoneNumber: "",
-
+        userName: this.userName,
+        fullName: this.fullName,
+        idNumber: this.idNumber,
+        phoneNumber: this.phoneNumber,
         rol: "seller",
-        listOfVehicles: {},
-      },
+      };
+      
+      var userAnswer = await api.creatUser(this.user);
+      api.setUserLogged(userAnswer);
       this.$router.push("/catalog");
-      api.creatUser(this.user)
     },
   },
 };
