@@ -150,7 +150,7 @@ export default {
                };
                api.setUserLogged(user);
                this.$router.push("/catalog");
-  
+               
             }
           }
         });

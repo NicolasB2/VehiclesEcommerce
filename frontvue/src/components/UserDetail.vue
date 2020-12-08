@@ -44,8 +44,9 @@ export default {
     };
   },
   async mounted() {
-    this.user = await api.getUser("5fc6a8da02fe4574386a9b0f");
-    this.vehicles = await api.getvehiclesbyuser("5fc6a8da02fe4574386a9b0f");
+    var userId = api.getUserLogged();
+    this.user = await api.getUser(userId);
+    this.vehicles = await api.getvehiclesbyuser(userId);
   },
     methods: {
     addCar() {

@@ -39,10 +39,8 @@ export const api = {
     res.data.forEach(element => {
       if(element.idSeller===id){
         byuser.push(element)
-        console.log(element);
       }
     });
-    console.log(res.data)
     return byuser;
   }),
   getvehicles: handleError(async () => {

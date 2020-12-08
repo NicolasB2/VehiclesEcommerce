@@ -37,8 +37,12 @@
           <h6 style="color: white; margin-top: 6px">Registro</h6>
         </v-btn>
 
-        <v-btn v-if="this.userId !== ''" router :to="{ path: '/userdetail' }" text>
+        <v-btn v-if="this.userId !== ''  && this.user.rol == 'seller' " router :to="{ path: '/userdetail' }" text>
           <h6 style="color: white; margin-top: 6px">User Detail</h6>
+        </v-btn>
+
+        <v-btn v-if="this.userId !== '' && this.user.rol == 'admin' " router :to="{ path: '/reports' }" text>
+          <h6 style="color: white; margin-top: 6px">Reports</h6>
         </v-btn>
       </v-row>
     </v-container>
@@ -52,6 +56,7 @@ import { api } from "../helpers/helpers";
 export default {
   name: "CoreAppBar",
   data: () => ({
+    user: {},
     userId : {},
     micookie: {},
     showLogo: false,
@@ -59,7 +64,6 @@ export default {
   }),
   created: function () {
     this.leerCookie();
-    console.log(this.userId)
   },
   methods: {
 
@@ -69,8 +73,10 @@ export default {
       this.showLogo = offset > 200;
     },
 
-    leerCookie() {
+    async leerCookie() {
       this.userId = api.getUserLogged();
+      this.user = await api.getUser(this.userId);
+      console.log(this.user.rol)
     },
   },
 };

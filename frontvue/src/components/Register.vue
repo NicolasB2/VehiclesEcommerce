@@ -126,7 +126,6 @@ export default {
         rol: "seller",
         listOfVehicles: {},
       },
-
       this.$router.push("/catalog");
       api.creatUser(this.user)
     },
