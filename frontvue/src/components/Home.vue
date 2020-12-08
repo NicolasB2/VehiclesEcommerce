@@ -13,8 +13,8 @@
     <section id="service" class="service">
       <div class="container">
         <div class="service-content">
-          <div class="row">
-            <div class="col-md-4 col-sm-6">
+          <div class="row" style="justify-content: center">
+            <div  v-if="this.userId === '' && this.user.rol != 'admin' " class="col-md-4 col-sm-6">
               <div class="single-service-item">
                 <div class="single-service-icon">
                   <v-icon color="black" x-large> mdi-car-connected </v-icon>
@@ -54,11 +54,28 @@
 
 
 <script>
+// Utilities
+import { api } from "../helpers/helpers";
 import AppBar from './AppBar';
 export default {
+   data: () => ({
+    user: {},
+    userId : {},
+    micookie: {},
+  }),
   components:{
   AppBar
-  }}
+  }, created: function () {
+    this.leerCookie();
+  },
+  methods:{
+async leerCookie() {
+      this.userId = api.getUserLogged();
+      this.user = await api.getUser(this.userId);
+      console.log(this.user.rol)
+    },
+  }
+  }
 </script>
 
 <style>
