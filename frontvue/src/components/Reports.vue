@@ -3,92 +3,76 @@
     <AppBar />
     <section class="font">
       <!-- Small charts -->
-      <br><br><br><br>
+      <br /><br /><br /><br />
       <b-row>
-      <div class="col-lg-4">
-          
-        <b-card bg-variant="dark"  text-variant="white" class="text-center">
-          <template slot="header">
-           
-            <h3 class="card-title">
-              Users vs Time
-            </h3>
-          </template>
-          <div class="chart-area">
-            <line-chart
-              style="height: 100%"
-              :chart-data="purpleLineChart.chartData"
-              :gradient-colors="purpleLineChart.gradientColors"
-              :gradient-stops="purpleLineChart.gradientStops"
-              :extra-options="purpleLineChart.extraOptions"
-            >
-            </line-chart>
-          </div>
-        </b-card>
-      </div>
-      <div class="col-lg-4">
-        <b-card bg-variant="dark"  text-variant="white" class="text-center">
-          <template slot="header">
-            
-            <h3 class="card-title">
-               Sells by Brand
-            </h3>
-          </template>
-          <div class="chart-area">
-            <bar-chart
-              style="height: 100%"
-              :chart-data="blueBarChart.chartData"
-              :gradient-stops="blueBarChart.gradientStops"
-              :extra-options="blueBarChart.extraOptions"
-            >
-            </bar-chart>
-          </div>
-        </b-card>
-      </div>
-            <div class="col-lg-4">
-        <b-card bg-variant="dark"  text-variant="white" class="text-center">
-          <template slot="header">
-            
-            <h3 class="card-title">
-               Brand vs Time
-            </h3>
-          </template>
-          <div class="chart-area">
-            <line-chart
-              style="height: 100%"
-              :chart-data="greenLineChart.chartData"
-              :gradient-stops="greenLineChart.gradientStops"
-              :extra-options="greenLineChart.extraOptions"
-            >
-            </line-chart>
-          </div>
-        </b-card>
-      </div>
+        <div class="col-lg-4">
+          <b-card bg-variant="dark" text-variant="white" class="text-center">
+            <template slot="header">
+              <h3 class="card-title">Users vs Time</h3>
+            </template>
+            <div class="chart-area">
+              <line-chart
+                style="height: 100%"
+                :chart-data="purpleLineChart.chartData"
+                :gradient-colors="purpleLineChart.gradientColors"
+                :gradient-stops="purpleLineChart.gradientStops"
+                :extra-options="purpleLineChart.extraOptions"
+              >
+              </line-chart>
+            </div>
+          </b-card>
+        </div>
+        <div class="col-lg-4">
+          <b-card bg-variant="dark" text-variant="white" class="text-center">
+            <template slot="header">
+              <h3 class="card-title">Sells by Brand</h3>
+            </template>
+            <div class="chart-area">
+              <bar-chart
+                style="height: 100%"
+                :chart-data="blueBarChart.chartData"
+                :gradient-stops="blueBarChart.gradientStops"
+                :extra-options="blueBarChart.extraOptions"
+              >
+              </bar-chart>
+            </div>
+          </b-card>
+        </div>
+        <div class="col-lg-4">
+          <b-card bg-variant="dark" text-variant="white" class="text-center">
+            <template slot="header">
+              <h3 class="card-title">Brand vs Time</h3>
+            </template>
+            <div class="chart-area">
+              <line-chart
+                style="height: 100%"
+                :chart-data="greenLineChart.chartData"
+                :gradient-stops="greenLineChart.gradientStops"
+                :extra-options="greenLineChart.extraOptions"
+              >
+              </line-chart>
+            </div>
+          </b-card>
+        </div>
       </b-row>
-      <b-row style="
-    justify-content: center;
-">
-
-      <div class="col-lg-4">
-        <b-card bg-variant="dark"  text-variant="white" class="text-center">
-          <template slot="header">
-            
-            <h3 class="card-title">
-               Price Recommendation
-            </h3>
-          </template>
-          <div class="chart-area">
-             <pie-chart
-              style="height: 100%"
-              :chart-data="purpleLineChart.chartData"
-              
-              
-            >
-            </pie-chart>
-          </div>
-        </b-card>
-      </div>
-      <br><br>
+      <b-row style="justify-content: center">
+        <div class="col-lg-4">
+          <b-card bg-variant="dark" text-variant="white" class="text-center">
+            <template slot="header">
+              <h3 class="card-title">Price Recommendation</h3>
+            </template>
+            <div class="chart-area">
+              <pie-chart
+              :key="componentKey"
+                style="height: 100%"
+                :chart-data="purplePieChart.chartData"
+              >
+              </pie-chart>
+            </div>
+          
+          </b-card>
+        </div>
+        <br /><br />
       </b-row>
     </section>
   </div>
@@ -135,31 +119,18 @@ let bigChartDatasetOptions = {
   pointHoverBorderWidth: 15,
   pointRadius: 4,
 };
-
+import axios from 'axios'
 export default {
+    
   components: {
     AppBar,
     LineChart,
     BarChart,
-    PieChart
+    PieChart,
   },
   data() {
     return {
-        chartOptions: {
-        hoverBorderWidth: 20
-      },
-      chartData: {
-        hoverBackgroundColor: "red",
-        hoverBorderWidth: 10,
-        labels: ["Green", "Red", "Blue"],
-        datasets: [
-          {
-            label: "Data One",
-            backgroundColor: ["#41B883", "#E46651", "#00D8FF"],
-            data: [1, 10, 5]
-          }
-        ]
-      },
+      componentKey: 0,
       bigLineChart: {
         activeIndex: 0,
         chartData: {
@@ -196,6 +167,31 @@ export default {
               pointHoverBorderWidth: 15,
               pointRadius: 4,
               data: [80, 100, 70, 80, 120, 80],
+            },
+          ],
+        },
+        gradientColors: config.colors.primaryGradient,
+        gradientStops: [1, 0.2, 0],
+      }, purplePieChart: {
+        extraOptions: chartConfigs.purpleChartOptions,
+        chartData: {
+          labels: ["R-squared", "Error"],
+          datasets: [
+            {
+              label: "Data",
+              fill: true,
+              borderColor: config.colors.primary,
+              borderWidth: 2,
+              borderDash: [],
+              borderDashOffset: 0.0,
+              pointBackgroundColor: config.colors.primary,
+              pointBorderColor: "rgba(255,255,255,0)",
+              pointHoverBackgroundColor: config.colors.primary,
+              pointBorderWidth: 20,
+              pointHoverRadius: 4,
+              pointHoverBorderWidth: 15,
+              pointRadius: 4,
+              data: [],
             },
           ],
         },
@@ -252,13 +248,31 @@ export default {
         gradientStops: [1, 0.4, 0],
       },
     };
-  },
+  }, methods:{
+      forceRerender() {
+          console.log("entrooo")
+      this.componentKey += 1;
+    }
+  },created() {
+       axios.get('https://cars-flask-model.herokuapp.com/').then(response => {
+          var numero =response.data.results.metric;
+            var conDecimal = numero.toFixed(4)*100; 
+            var error = 100 - conDecimal
+            var error2 = parseFloat(error.toFixed(2))
+            this.purplePieChart.chartData.datasets[0].data = [conDecimal, error2]
+            
+            
+            this.forceRerender();
+        }).catch(e => {
+            console.log(e);
+        });
+  }
 };
 </script>
 
 <style>
 .font {
-     /* The image used */
+  /* The image used */
   background: url(https://images.unsplash.com/photo-1495435229349-e86db7bfa013?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1529&q=80)
     no-repeat;
 
