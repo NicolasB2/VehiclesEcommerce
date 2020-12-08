@@ -86,14 +86,26 @@ export default {
     
     async verifyUser() {
       
-      this.users = await api.getUsers();
-      this.users.forEach(element => {
-        if(element.email==this.email){
-          if(element.password==this.password){
-             this.$router.push("/catalog");
+      try {
+        this.users = await api.getUsers();
+        this.users.forEach(element => {
+          if(element.email==this.email){
+            if(element.password==this.password){
+               api.login(this.email,this.password)
+               const user = {
+                 email: this.email
+               };
+               api.setUserLogged(user);
+               this.$router.push("/catalog");
+  
+            }
           }
-        }
-      });
+        });
+      } catch (error) {
+          console.log(error);
+          this.error = true;
+      }
+
     },
   },
 };
