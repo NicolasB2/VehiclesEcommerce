@@ -24,7 +24,6 @@
 </template>
 
 <script>
-import { api } from "../helpers/helpers";
 export default {
   props: {
     car: {
@@ -35,10 +34,6 @@ export default {
     viewDetails() {
       this.$store.dispatch("viewDetails", this.car);
       this.$router.push("/cardetail");
-    },
-    deletedCar() {
-      api.deletvehicle(this.car._id);
-      location.reload();
     },
   },
 };

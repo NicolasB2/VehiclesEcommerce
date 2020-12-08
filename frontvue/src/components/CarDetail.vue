@@ -44,7 +44,8 @@ export default {
       this.$router.push("/cardetail");
     },
     deletedCar() {
-      api.deletvehicle(this.car._id);
+      this.car.state = "sold";
+      api.updatevehicle(this.car,this.car._id);
       location.reload();
     },
   },

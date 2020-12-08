@@ -37,15 +37,31 @@ export const api = {
     let byuser = [];
     const res = await axios.get(vehiclesURL);
     res.data.forEach(element => {
-      if(element.idSeller===id){
+      if(element.idSeller===id && element.state === 'onSale'){
         byuser.push(element)
       }
     });
     return byuser;
   }),
-  getvehicles: handleError(async () => {
+  getvehiclesSold: handleError(async () => {
+    let vehiclesSold = [];
     const res = await axios.get(vehiclesURL);
-    return res.data;
+    res.data.forEach(element => {
+      if( element.state === 'sold'){
+        vehiclesSold.push(element)
+      }
+    });
+    return vehiclesSold;
+  }),
+  getvehicles: handleError(async () => {
+    let vehiclesSell = [];
+    const res = await axios.get(vehiclesURL);
+    res.data.forEach(element => {
+      if( element.state === 'onSale'){
+        vehiclesSell.push(element)
+      }
+    });
+    return vehiclesSell;
   }),
   deletvehicle: handleError(async id => {
     const res = await axios.delete(vehiclesURL + id);
@@ -75,7 +91,6 @@ export const api = {
   }),
   creatUser: handleError(async payload => {
     const res = await axios.post(usersURL, payload);
-    console.log(res.data)
     return res.data;
   }),
   updateUser: handleError(async payload => {
