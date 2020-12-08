@@ -4,21 +4,21 @@
     <section class="font">
       <!-- Small charts -->
       <br /><br /><br /><br />
-      <b-row>
+      <b-row style="justify-content: center">
         <div class="col-lg-4">
           <b-card bg-variant="dark" text-variant="white" class="text-center">
             <template slot="header">
-              <h3 class="card-title">Users vs Time</h3>
+              <h3 class="card-title">Sells by Users</h3>
             </template>
             <div class="chart-area">
-              <line-chart
+              <bar-chart
                 style="height: 100%"
-                :chart-data="purpleLineChart.chartData"
-                :gradient-colors="purpleLineChart.gradientColors"
-                :gradient-stops="purpleLineChart.gradientStops"
-                :extra-options="purpleLineChart.extraOptions"
+                :key="componentKey"
+                :chart-data="blueBarChart2.chartData"
+                :gradient-stops="blueBarChart2.gradientStops"
+                :extra-options="blueBarChart2.extraOptions"
               >
-              </line-chart>
+              </bar-chart>
             </div>
           </b-card>
         </div>
@@ -30,6 +30,7 @@
             <div class="chart-area">
               <bar-chart
                 style="height: 100%"
+                :key="componentKey"
                 :chart-data="blueBarChart.chartData"
                 :gradient-stops="blueBarChart.gradientStops"
                 :extra-options="blueBarChart.extraOptions"
@@ -38,22 +39,7 @@
             </div>
           </b-card>
         </div>
-        <div class="col-lg-4">
-          <b-card bg-variant="dark" text-variant="white" class="text-center">
-            <template slot="header">
-              <h3 class="card-title">Brand vs Time</h3>
-            </template>
-            <div class="chart-area">
-              <line-chart
-                style="height: 100%"
-                :chart-data="greenLineChart.chartData"
-                :gradient-stops="greenLineChart.gradientStops"
-                :extra-options="greenLineChart.extraOptions"
-              >
-              </line-chart>
-            </div>
-          </b-card>
-        </div>
+    
       </b-row>
       <b-row style="justify-content: center">
         <div class="col-lg-4">
@@ -79,100 +65,28 @@
 </template>
 
 <script>
-import LineChart from "@/components/Charts/LineChart";
+
 import BarChart from "@/components/Charts/BarChart";
 import PieChart from "@/components/Charts/PieChart";
 import * as chartConfigs from "@/components/Charts/config";
 import AppBar from "./AppBar";
 import config from "@/config";
 
-let bigChartData = [
-  [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100],
-  [80, 120, 105, 110, 95, 105, 90, 100, 80, 95, 70, 120],
-  [60, 80, 65, 130, 80, 105, 90, 130, 70, 115, 60, 130],
-];
-let bigChartLabels = [
-  "JAN",
-  "FEB",
-  "MAR",
-  "APR",
-  "MAY",
-  "JUN",
-  "JUL",
-  "AUG",
-  "SEP",
-  "OCT",
-  "NOV",
-  "DEC",
-];
-let bigChartDatasetOptions = {
-  fill: true,
-  borderColor: config.colors.primary,
-  borderWidth: 2,
-  borderDash: [],
-  borderDashOffset: 0.0,
-  pointBackgroundColor: config.colors.primary,
-  pointBorderColor: "rgba(255,255,255,0)",
-  pointHoverBackgroundColor: config.colors.primary,
-  pointBorderWidth: 20,
-  pointHoverRadius: 4,
-  pointHoverBorderWidth: 15,
-  pointRadius: 4,
-};
+
 import axios from 'axios'
+import { api } from "../helpers/helpers";
 export default {
     
   components: {
     AppBar,
-    LineChart,
     BarChart,
     PieChart,
   },
   data() {
     return {
       componentKey: 0,
-      bigLineChart: {
-        activeIndex: 0,
-        chartData: {
-          datasets: [
-            {
-              ...bigChartDatasetOptions,
-              data: bigChartData[0],
-            },
-          ],
-          labels: bigChartLabels,
-        },
-        extraOptions: chartConfigs.purpleChartOptions,
-        gradientColors: config.colors.primaryGradient,
-        gradientStops: [1, 0.4, 0],
-        categories: [],
-      },
-      purpleLineChart: {
-        extraOptions: chartConfigs.purpleChartOptions,
-        chartData: {
-          labels: ["JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],
-          datasets: [
-            {
-              label: "Data",
-              fill: true,
-              borderColor: config.colors.primary,
-              borderWidth: 2,
-              borderDash: [],
-              borderDashOffset: 0.0,
-              pointBackgroundColor: config.colors.primary,
-              pointBorderColor: "rgba(255,255,255,0)",
-              pointHoverBackgroundColor: config.colors.primary,
-              pointBorderWidth: 20,
-              pointHoverRadius: 4,
-              pointHoverBorderWidth: 15,
-              pointRadius: 4,
-              data: [80, 100, 70, 80, 120, 80],
-            },
-          ],
-        },
-        gradientColors: config.colors.primaryGradient,
-        gradientStops: [1, 0.2, 0],
-      }, purplePieChart: {
+
+      purplePieChart: {
         extraOptions: chartConfigs.purpleChartOptions,
         chartData: {
           labels: ["R-squared", "Error"],
@@ -198,49 +112,38 @@ export default {
         gradientColors: config.colors.primaryGradient,
         gradientStops: [1, 0.2, 0],
       },
-      greenLineChart: {
-        extraOptions: chartConfigs.greenChartOptions,
-        chartData: {
-          labels: ["JUL", "AUG", "SEP", "OCT", "NOV"],
-          datasets: [
-            {
-              label: "My First dataset",
-              fill: true,
-              borderColor: config.colors.danger,
-              borderWidth: 2,
-              borderDash: [],
-              borderDashOffset: 0.0,
-              pointBackgroundColor: config.colors.danger,
-              pointBorderColor: "rgba(255,255,255,0)",
-              pointHoverBackgroundColor: config.colors.danger,
-              pointBorderWidth: 20,
-              pointHoverRadius: 4,
-              pointHoverBorderWidth: 15,
-              pointRadius: 4,
-              data: [90, 27, 60, 12, 80],
-            },
-          ],
-        },
-        gradientColors: [
-          "rgba(66,134,121,0.15)",
-          "rgba(66,134,121,0.0)",
-          "rgba(66,134,121,0)",
-        ],
-        gradientStops: [1, 0.4, 0],
-      },
       blueBarChart: {
         extraOptions: chartConfigs.barChartOptions,
         chartData: {
-          labels: ["USA", "GER", "AUS", "UK", "RO", "BR"],
+          labels: [],
           datasets: [
             {
-              label: "Countries",
+              label: "Brand",
               fill: true,
               borderColor: config.colors.info,
               borderWidth: 2,
               borderDash: [],
               borderDashOffset: 0.0,
-              data: [53, 20, 10, 80, 100, 45],
+              data: [],
+            },
+          ],
+        },
+        gradientColors: config.colors.primaryGradient,
+        gradientStops: [1, 0.4, 0],
+      },
+      blueBarChart2: {
+        extraOptions: chartConfigs.barChartOptions,
+        chartData: {
+          labels: [],
+          datasets: [
+            {
+              label: "Count",
+              fill: true,
+              borderColor: config.colors.danger,
+              borderWidth: 2,
+              borderDash: [],
+              borderDashOffset: 0.0,
+              data: [],
             },
           ],
         },
@@ -250,10 +153,41 @@ export default {
     };
   }, methods:{
       forceRerender() {
-          console.log("entrooo")
+        console.log("entrooo")
       this.componentKey += 1;
-    }
-  },created() {
+    }, compressArray(original) {
+ 
+	var compressed = [];
+	// make a copy of the input array
+	var copy = original.slice(0);
+ 
+	// first loop goes over every element
+	for (var i = 0; i < original.length; i++) {
+ 
+		var myCount = 0;	
+		// loop over every element in the copy and see if it's the same
+		for (var w = 0; w < copy.length; w++) {
+			if (original[i] == copy[w]) {
+				// increase amount of times duplicate is found
+				myCount++;
+				// sets item to undefined
+				delete copy[w];
+			}
+		}
+ 
+		if (myCount > 0) {
+			var a = new Object();
+			a.value = original[i];
+			a.count = myCount;
+			compressed.push(a);
+		}
+	}
+ 
+	return compressed;
+}
+  },async created() {
+
+
        axios.get('https://cars-flask-model.herokuapp.com/').then(response => {
           var numero =response.data.results.metric;
             var conDecimal = numero.toFixed(4)*100; 
@@ -266,6 +200,32 @@ export default {
         }).catch(e => {
             console.log(e);
         });
+      var testArray = []
+      var usersArray = []
+      var users2 = []
+      var array = await api.getvehiclesSold()
+        array.forEach(element => {
+          testArray.push(element.car)
+          usersArray.push(element.idSeller)
+        });
+        for (let index = 0; index < usersArray.length; index++) {
+          const element = await api.getUser(usersArray[index]);
+          users2.push(element.userName)
+        }
+         var newArray2 = this.compressArray(users2);
+      var newArray = this.compressArray(testArray);
+        newArray.forEach(element => {
+           this.blueBarChart.chartData.datasets[0].data.push(element.count)
+           this.blueBarChart.chartData.labels.push(element.value)
+        });
+        this.forceRerender();
+
+        newArray2.forEach(element => {
+           this.blueBarChart2.chartData.datasets[0].data.push(element.count)
+           this.blueBarChart2.chartData.labels.push(element.value)
+        });
+        this.forceRerender();
+    
   }
 };
 </script>
