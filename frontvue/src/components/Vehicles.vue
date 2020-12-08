@@ -1,5 +1,6 @@
 <template>
   <section class="catalog-cars">
+    <AppBar/>
     <div class="catalog">
       <div grid-list-md fluid>
         <div></div>
@@ -20,9 +21,11 @@
 <script>
 import Car from "./Car";
 import { api } from "../helpers/helpers";
+import AppBar from './AppBar';
 
 export default {
   components: {
+     AppBar,
     appCar: Car,
   },
   data() {

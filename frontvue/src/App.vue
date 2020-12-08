@@ -1,7 +1,7 @@
   
 <template>
   <v-app>
-    <AppBar/>
+    
     <v-main>
       <router-view></router-view>
     </v-main>
@@ -10,12 +10,10 @@
 
 <script>
 
-import AppBar from './components/AppBar';
+
 export default {
   name: 'App',
-  components: {
-    AppBar
-  },
+
   data: () => ({
     //
   }),

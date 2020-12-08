@@ -1,6 +1,8 @@
 <template>
   <section class="font">
+    <AppBar/>
     <div id="Price">
+      
       <v-flex class="vux-center">
         <div class="price-form">
           <v-card elevation="10" class="form-wrapper">
@@ -183,9 +185,14 @@
 
 
 <script>
-import axios from "axios";
+import axios from 'axios'
+
 import { api } from "../helpers/helpers";
+import AppBar from './AppBar';
 export default {
+  components:{
+  AppBar
+  },
   data() {
     return {
       form: {

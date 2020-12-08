@@ -1,5 +1,6 @@
 <template>
   <section class="detail-user">
+    <AppBar/>
     <div class="catalog">
       <div class="my-cars">
         <div class="user-txt">
@@ -34,8 +35,10 @@
 <script>
 import Car from "./CarDetail";
 import { api } from "../helpers/helpers";
+import AppBar from './AppBar';
 export default {
   components: {
+    AppBar,
     appCar: Car,
   },
   data() {

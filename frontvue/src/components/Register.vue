@@ -1,5 +1,6 @@
 <template>
   <section class="font">
+    <AppBar/>
     <div id="Login">
       <v-flex class="vux-center">
         <div class="login-form">
@@ -72,7 +73,11 @@
 import { mask } from "vue-the-mask";
 import { api } from "../helpers/helpers";
 
+import AppBar from './AppBar';
 export default {
+  components:{
+  AppBar
+  },
   directives: {
     mask,
   },
