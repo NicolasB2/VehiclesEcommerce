@@ -64,7 +64,7 @@ export default {
   methods: {
     logout(){
       api.deleteUserLogged();
-      this.$router.push("/login");
+      this.$router.push("/home");
     },
     onScroll() {
       const offset = window.pageYOffset;
