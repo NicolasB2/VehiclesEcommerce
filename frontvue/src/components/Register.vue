@@ -149,6 +149,16 @@ export default {
   height: 100vh;
 }
 .font {
-  background: #0f2032;
+     /* The image used */
+  background: url(https://images.unsplash.com/photo-1501428291079-b42d45fc7455?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)
+    no-repeat;
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 </style>
